@@ -1,5 +1,5 @@
 <template>
-    <nav class="py-3 backdrop-blur-md bg-black/10 border-b border-white/10">
+    <nav class="py-3 backdrop-blur-md bg-my-background/10 border-b border-white/10 fixed top-0 w-full">
         <div class="flex justify-between mx-auto px-4 max-w-7xl">
             <div>
                 <NuxtLink to="/">

@@ -1,6 +1,6 @@
 <template>
     <AppHeader />
-    <main>
+    <main class="pt-16">
         <slot />
     </main>
 </template>
