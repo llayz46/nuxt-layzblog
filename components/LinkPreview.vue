@@ -71,7 +71,7 @@ const props = withDefaults(defineProps<Props>(), {
     isStatic: false,
     imageSrc: "",
     url: "",
-    width: 200,
+    width: 225,
     height: 125,
     target: "",
 });
