@@ -7,7 +7,7 @@ tags: [ "dev", "articles", "web", "roadmap" ]
 ---
 # Roadmap pour Devenir Développeur Web en 2024
 
-Devenir développeur web est un parcours qui peut sembler intimidant, mais avec une roadmap claire et bien structurée, vous pouvez avancer sereinement. Voici une feuille de route pour 2024, que vous pouvez suivre pour bâtir des compétences solides en développement web, en partant des bases jusqu'aux technologies modernes.K
+Devenir développeur web est un parcours qui peut sembler intimidant, mais avec une roadmap claire et bien structurée, vous pouvez avancer sereinement. Voici une feuille de route pour 2024, que vous pouvez suivre pour bâtir des compétences solides en développement web, en partant des bases jusqu'aux technologies modernes.
 
 ## 1. Les Fondamentaux : HTML et CSS
 

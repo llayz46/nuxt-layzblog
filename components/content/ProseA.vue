@@ -1,11 +1,4 @@
 <template>
-<!--    <NuxtLink-->
-<!--        :href="props.href"-->
-<!--        :target="props.target"-->
-<!--        class="!font-medium"-->
-<!--    >-->
-<!--        <slot />-->
-<!--    </NuxtLink>-->
     <LinkPreview
         :target="props.target"
         :url="props.href"

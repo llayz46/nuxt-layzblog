@@ -3,7 +3,7 @@
         <!-- Trigger -->
         <NuxtLink
             :to="url"
-            :class="cn('!font-medium', props.linkClass)"
+            :class="cn('!font-medium !text-my-primary-600 hover:!underline', props.linkClass)"
             @mousemove="handleMouseMove"
             @mouseenter="showPreview"
             @mouseleave="hidePreview"
