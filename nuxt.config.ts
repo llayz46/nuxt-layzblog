@@ -5,10 +5,11 @@ export default defineNuxtConfig({
     devtools: {enabled: true},
 
     modules: [
-        '@nuxt/content',
-        '@nuxtjs/tailwindcss',
-        '@nuxtjs/google-fonts',
-        '@vueuse/motion/nuxt',
+      '@nuxt/content',
+      '@nuxtjs/tailwindcss',
+      '@nuxtjs/google-fonts',
+      '@vueuse/motion/nuxt',
+      'nuxt-time'
     ],
 
     routeRules: {

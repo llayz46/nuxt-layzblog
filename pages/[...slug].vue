@@ -10,17 +10,12 @@
 
 <template>
     <Breadcrumb :pages="[{ name: 'Blog', href: '/blog' }, { name: article.title, href: null }]" />
-    <ContentRenderer :value="article" tag="article" class="content !max-w-3xl mx-auto mt-12" />
-<!--    <ContentDoc :path="path" v-slot="{ doc }">-->
-<!--        <Breadcrumb :pages="[{ name: 'Blog', href: '/blog' }, { name: doc.title, href: null }]" />-->
-<!--        <article class="content max-w-3xl mx-auto mt-12">-->
-<!--&lt;!&ndash;            <header class="mb-4">&ndash;&gt;-->
-<!--&lt;!&ndash;                <h1 class="text-3xl font-semibold">{{ doc.title }}</h1>&ndash;&gt;-->
-<!--&lt;!&ndash;            </header>&ndash;&gt;-->
 
-<!--            <ContentRenderer :value="doc"></ContentRenderer>-->
-<!--        </article>-->
-<!--    </ContentDoc>-->
+    <div class="max-w-3xl mx-auto mt-12 text-xs text-white/50">
+        <NuxtTime :datetime="article.meta.date" month="long" day="numeric" year="numeric" locale="fr" />
+    </div>
+
+    <ContentRenderer :value="article" tag="article" class="content !max-w-3xl mx-auto mt-2" />
 </template>
 
 <style scoped>

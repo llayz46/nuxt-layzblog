@@ -1,9 +1,9 @@
 <script setup lang="ts">
 const { data: articles } = await useAsyncData('documents-list', () => {
     return queryCollection('articles')
+        .order('date', 'DESC')
         .all()
 })
-// TODO: trier par date de publication
 </script>
 
 <template>
