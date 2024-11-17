@@ -26,6 +26,7 @@ body::before {
     width: 100%;
     z-index: -1;
     background: radial-gradient(75.5% 75.5% at 50% 24.5%, rgba(37, 93, 235, 0.2) 0%, rgba(203, 113, 14, 0.02) 100%);
+    //filter: blur(1px);
 }
 
 .bg-noisy {

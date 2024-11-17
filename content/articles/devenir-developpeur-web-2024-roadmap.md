@@ -7,9 +7,9 @@ tags: [ "dev", "articles", "web", "roadmap" ]
 ---
 # Roadmap pour Devenir Développeur Web en 2024
 
-Devenir développeur web est un parcours qui peut sembler intimidant, mais avec une roadmap claire et bien structurée, vous pouvez avancer sereinement. Voici une feuille de route pour 2024, que vous pouvez suivre pour bâtir des compétences solides en développement web, en partant des bases jusqu'aux technologies modernes.
+Devenir développeur web est un parcours qui peut sembler intimidant, mais avec une roadmap claire et bien structurée, vous pouvez avancer sereinement. Voici une feuille de route pour 2024, que vous pouvez suivre pour bâtir des compétences solides en développement web, en partant des bases jusqu'aux technologies modernes. [Documentation officielle MySQL](https://dev.mysql.com/doc/)
 
-## 1. Commencez par les Fondamentaux : HTML et CSS
+## 1. Les Fondamentaux : HTML et CSS
 
 ### Pourquoi HTML et CSS ?
 HTML (HyperText Markup Language) et CSS (Cascading Style Sheets) sont les piliers de tout site web. Ils vous permettent de structurer et de styliser vos pages web. Sans une bonne maîtrise de ces technologies, il est difficile de progresser.
@@ -24,7 +24,7 @@ HTML (HyperText Markup Language) et CSS (Cascading Style Sheets) sont les pilier
 
 ---
 
-## 2. Découvrez la Programmation Dynamique avec PHP Natif
+## 2. PHP Natif : les bases de la dynamique
 
 ### Pourquoi PHP Natif ?
 PHP est un langage côté serveur qui vous permettra d'apporter de la dynamique à vos sites. C'est une excellente façon d'apprendre les concepts de la programmation back-end sans vous noyer dans des frameworks complexes.

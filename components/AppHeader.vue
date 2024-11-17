@@ -7,7 +7,7 @@
                 </NuxtLink>
             </div>
             <div class="flex items-center gap-5">
-                <AppHeaderLink route="/blog">Projects</AppHeaderLink>
+                <AppHeaderLink route="/">Projets</AppHeaderLink>
                 <AppHeaderLink route="/blog">Blog</AppHeaderLink>
 <!--                lang-->
 <!--                darkmode-->
