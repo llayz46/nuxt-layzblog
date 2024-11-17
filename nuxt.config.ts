@@ -8,6 +8,7 @@ export default defineNuxtConfig({
         '@nuxt/content',
         '@nuxtjs/tailwindcss',
         '@nuxtjs/google-fonts',
+        '@vueuse/motion/nuxt',
     ],
 
     routeRules: {
@@ -21,6 +22,8 @@ export default defineNuxtConfig({
             'DM Sans': true
         }
     },
+
+    css: ['~/assets/css/tailwind.css'],
 
     compatibilityDate: '2024-11-16'
 })

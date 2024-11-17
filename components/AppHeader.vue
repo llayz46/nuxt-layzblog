@@ -11,6 +11,7 @@
                 <AppHeaderLink route="/blog">Blog</AppHeaderLink>
 <!--                lang-->
 <!--                darkmode-->
+<!--                todo: sticky-->
             </div>
         </div>
     </nav>

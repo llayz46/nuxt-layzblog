@@ -4,7 +4,7 @@
             v-if="props.id && generate"
             :href="`#${props.id}`"
         >
-            <span class="absolute left-0 duration-150 px-0 overflow-hidden opacity-0 max-w-0 group-hover:max-w-[2.5rem] group-hover:pr-3 group-hover:opacity-100 hover:underline text-primary-500">#</span>
+            <span class="absolute left-0 duration-150 px-0 overflow-hidden opacity-0 max-w-0 group-hover:max-w-[2.5rem] group-hover:pr-3 group-hover:opacity-100 hover:underline text-my-primary-500">#</span>
             <slot />
         </a>
         <slot v-else />
