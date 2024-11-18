@@ -1,5 +1,5 @@
 <template>
-    <h2 :id="props.id" class="group relative text-white">
+    <h2 :id="props.id" class="group relative text-white whitespace-nowrap">
         <a class="duration-150 group-hover:pl-8"
             v-if="props.id && generate"
             :href="`#${props.id}`"

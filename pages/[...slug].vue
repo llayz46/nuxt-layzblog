@@ -16,7 +16,7 @@
     </div>
 
 <!--    {{ article.toc }}-->
-    <ContentRenderer v-if="article" :value="article" tag="article" class="content !max-w-3xl mx-auto mt-2 pb-32" />
+    <ContentRenderer v-if="article" :value="article" tag="article" class="content !max-w-3xl mx-auto mt-2 pb-32 overflow-visible" />
 </template>
 
 <style scoped>
