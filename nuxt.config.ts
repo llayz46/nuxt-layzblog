@@ -1,5 +1,4 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import path from "node:path";
 
 export default defineNuxtConfig({
     devtools: {enabled: true},
@@ -25,6 +24,42 @@ export default defineNuxtConfig({
     },
 
     css: ['~/assets/css/tailwind.css'],
+
+    content: {
+        build: {
+            markdown: {
+                highlight: {
+                    theme: 'kanagawa-wave',
+                    langs: [
+                        'php',
+                        'js',
+                        'json',
+                        'ts',
+                        'html',
+                        'css',
+                        'vue',
+                        'shell',
+                        'mdc',
+                        'md',
+                        'yaml',
+                        'bash',
+                        'blade',
+                        'sql',
+                        'dotenv',
+                        'nginx',
+                        'regex',
+                        'sass',
+                        'scss',
+                        'vue',
+                    ]
+                },
+                toc: {
+                    depth: 3,
+                    searchDepth: 3
+                }
+            },
+        }
+    },
 
     compatibilityDate: '2024-11-16'
 })

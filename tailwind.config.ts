@@ -17,7 +17,7 @@ export default {
     theme: {
         extend: {
             colors: {
-                'my-background': '#0E1118',
+                'my-background': '#0F1113FF',
                 'my-primary': {
                     '50': '#eef8ff',
                     '100': '#d9efff',

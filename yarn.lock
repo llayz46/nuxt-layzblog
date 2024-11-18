@@ -298,10 +298,10 @@
   resolved "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.24.0.tgz"
   integrity sha512-7IAFPrjSQIJrGsK6flwg7NFmwBoSTyF3rl7If0hNUFQU4ilTsEPL6GuMuU9BfIWVVGuRnuIidkSMC+c0Otu8IA==
 
-"@heroicons/vue@^2.1.5":
-  version "2.1.5"
-  resolved "https://registry.npmjs.org/@heroicons/vue/-/vue-2.1.5.tgz"
-  integrity sha512-IpqR72sFqFs55kyKfFS7tN+Ww6odFNeH/7UxycIOrlVYfj4WUGAdzQtLBnJspucSeqWFQsKM0g0YrgU655BEfA==
+"@heroicons/vue@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.npmjs.org/@heroicons/vue/-/vue-2.2.0.tgz"
+  integrity sha512-G3dbSxoeEKqbi/DFalhRxJU4mTXJn7GwZ7ae8NuEQzd1bqdd0jAbdaBZlHPcvPD2xI1iGzNVB4k20Un2AguYPw==
 
 "@inspira-ui/plugins@^0.0.1":
   version "0.0.1"
