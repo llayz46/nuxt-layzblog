@@ -9,14 +9,17 @@
 </script>
 
 <template>
-    <Breadcrumb v-if="article" :pages="[{ name: 'Blog', href: '/blog' }, { name: article.title, href: null }]" />
+    <div class="max-w-3xl mx-auto">
+        <Breadcrumb v-if="article" :pages="[{ name: 'Blog', href: '/blog' }, { name: article.title, href: null }]" />
 
-    <div class="max-w-3xl mx-auto mt-12 text-xs text-white/50">
-        <NuxtTime v-if="article" :datetime="article.meta.date as string" month="long" day="numeric" year="numeric" locale="fr" />
+        <div class="mt-12 text-xs text-white/50">
+            <NuxtTime v-if="article" :datetime="article.meta.date as string" month="long" day="numeric" year="numeric" locale="fr" />
+        </div>
+
+        <ContentRenderer v-if="article" :value="article" tag="article" class="content !max-w-3xl mt-2 pb-32 overflow-visible" />
     </div>
 
-<!--    {{ article.toc }}-->
-    <ContentRenderer v-if="article" :value="article" tag="article" class="content !max-w-3xl mx-auto mt-2 pb-32 overflow-visible" />
+    <TableOfContent v-if="article" :toc="article.body.toc"/>
 </template>
 
 <style scoped>

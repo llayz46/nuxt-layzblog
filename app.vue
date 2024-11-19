@@ -57,6 +57,10 @@ body::-webkit-scrollbar-thumb {
     border: 2px solid theme('colors.my-background');
 }
 
+.router-link-active {
+    color: theme('colors.my-primary.500');
+}
+
 @keyframes noisy {
     0% {
         background-position: 0 0;

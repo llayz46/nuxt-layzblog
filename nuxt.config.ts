@@ -18,8 +18,8 @@ export default defineNuxtConfig({
     googleFonts: {
         // download: true,
         families: {
-            'Space Grotesk': true,
-            'DM Sans': true
+            'Space Grotesk': '300..700',
+            'DM Sans': '300..700'
         }
     },
 
@@ -28,6 +28,10 @@ export default defineNuxtConfig({
     content: {
         build: {
             markdown: {
+                toc: {
+                    depth: 3,
+                    searchDepth: 3
+                },
                 highlight: {
                     theme: 'kanagawa-wave',
                     langs: [
@@ -53,10 +57,6 @@ export default defineNuxtConfig({
                         'vue',
                     ]
                 },
-                toc: {
-                    depth: 3,
-                    searchDepth: 3
-                }
             },
         }
     },
