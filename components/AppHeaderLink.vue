@@ -5,7 +5,7 @@
 </script>
 
 <template>
-    <RouterLink :to="route" class="font-sans text-sm font-normal">
+    <NuxtLink :to="route" class="font-sans text-sm font-normal">
         <slot/>
-    </RouterLink>
+    </NuxtLink>
 </template>

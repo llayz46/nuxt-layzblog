@@ -8,9 +8,7 @@
             </div>
             <div class="flex items-center gap-5">
                 <AppHeaderLink route="/">Projets</AppHeaderLink>
-                <AppHeaderLink route="/blog">Blog</AppHeaderLink>
-<!--                lang-->
-<!--                darkmode-->
+                <AppHeaderLink route="/blog" >Blog</AppHeaderLink>
             </div>
         </div>
     </nav>
