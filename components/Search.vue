@@ -1,6 +1,6 @@
 <script setup>
 import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
-import { DocumentPlusIcon, FolderIcon, FolderPlusIcon, HashtagIcon, TagIcon } from '@heroicons/vue/24/outline'
+import { WindowIcon } from '@heroicons/vue/24/outline'
 import {
     Combobox,
     ComboboxInput,
@@ -18,35 +18,35 @@ defineProps({
 
 defineEmits(['close'])
 
-const projects = [
-    {id: 1, name: 'Workflow Inc. / Website Redesign', url: '#'},
-    // More projects...
-]
-
 const { data: sections } = await useAsyncData('search-sections', () => {
-    return queryCollectionSearchSections('articles')
+    return queryCollectionSearchSections('articles', {
+        ignoredTags: ['code'],
+    })
 })
-// console.log(sections.value[0].id)
 
-const recent = [projects[0]]
-const quickActions = [
-    {name: 'Add new file...', icon: DocumentPlusIcon, shortcut: 'N', url: '#'},
-    {name: 'Add new folder...', icon: FolderPlusIcon, shortcut: 'F', url: '#'},
-    {name: 'Add hashtag...', icon: HashtagIcon, shortcut: 'H', url: '#'},
-    {name: 'Add label...', icon: TagIcon, shortcut: 'L', url: '#'},
-]
+const sectionsMerge = sections.value.map((section) => {
+    return {
+        id: section.id,
+        title: section.title,
+        titles: section.titles,
+        content: section.content,
+        searchable: [section.title, section.content],
+    }
+})
+
+const baseProjects = sectionsMerge.slice(0, 20);
 
 const query = ref('')
 const filteredProjects = computed(() =>
     query.value === ''
         ? []
-        : projects.filter((project) => {
-            return project.name.toLowerCase().includes(query.value.toLowerCase())
+        : sectionsMerge.filter((project) => {
+            return project.searchable.some((searchable) => searchable.toLowerCase().includes(query.value.toLowerCase()))
         })
 )
 
 function onSelect(item) {
-    window.location = item.url
+    window.location = item.id
 }
 </script>
 
@@ -55,7 +55,7 @@ function onSelect(item) {
         <Dialog as="div" class="relative z-10" @close="$emit('close')">
             <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100"
                              leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
-                <div class="fixed inset-0 bg-gray-500 bg-opacity-25 transition-opacity"/>
+                <div class="fixed inset-0 bg-gray-800/40 transition-opacity"/>
             </TransitionChild>
 
             <div class="fixed inset-0 z-10 w-screen overflow-y-auto p-4 sm:p-6 md:p-20">
@@ -63,51 +63,44 @@ function onSelect(item) {
                                  enter-to="opacity-100 scale-100" leave="ease-in duration-200"
                                  leave-from="opacity-100 scale-100" leave-to="opacity-0 scale-95">
                     <DialogPanel
-                        class="mx-auto max-w-2xl transform divide-y divide-gray-500 divide-opacity-20 overflow-hidden rounded-xl bg-gray-900 shadow-2xl transition-all">
+                        class="mx-auto max-w-2xl transform divide-y divide-white/10 overflow-hidden rounded-xl bg-my-background shadow-2xl transition-all">
                         <Combobox @update:modelValue="onSelect">
                             <div class="relative">
                                 <MagnifyingGlassIcon
-                                    class="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-gray-500"
+                                    class="pointer-events-none absolute left-4 top-3.5 size-5 text-gray-500"
                                     aria-hidden="true"/>
                                 <ComboboxInput
                                     class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-white focus:ring-0 sm:text-sm"
-                                    placeholder="Search..." @change="query = $event.target.value"/>
+                                    placeholder="Rechercher..." @change="query = $event.target.value"/>
                             </div>
 
                             <ComboboxOptions v-if="query === '' || filteredProjects.length > 0" static
-                                             class="max-h-80 scroll-py-2 divide-y divide-gray-500 divide-opacity-20 overflow-y-auto">
+                                             class="max-h-80 scroll-py-2 divide-y divide-white/10 overflow-y-auto scrollbar">
                                 <li class="p-2">
                                     <h2 v-if="query === ''" class="mb-2 mt-4 px-3 text-xs font-semibold text-gray-200">
-                                        Recent searches</h2>
+                                        Recherche</h2>
                                     <ul class="text-sm text-gray-400">
-                                        <ComboboxOption v-for="project in query === '' ? recent : filteredProjects"
+                                        <ComboboxOption v-for="project in query === '' ? baseProjects : filteredProjects"
                                                         :key="project.id" :value="project" as="template"
                                                         v-slot="{ active }">
-                                            <li :class="['flex cursor-default select-none items-center rounded-md px-3 py-2', active && 'bg-gray-800 text-white']">
-                                                <FolderIcon
+                                            <li :class="['flex cursor-default select-none items-center rounded-md px-3 py-2', active && 'bg-gray-800/50 text-white']">
+                                                <WindowIcon
                                                     :class="['h-6 w-6 flex-none', active ? 'text-white' : 'text-gray-500']"
                                                     aria-hidden="true"/>
-                                                <span class="ml-3 flex-auto truncate">{{ project.name }}</span>
+                                                <span class="ml-3 flex-auto truncate">
+                                                    <template v-if="project.titles" v-for="(title, index) in project.titles" :key="index">
+                                                        <span class="font-medium text-white/75" v-if="title"
+                                                              :class="index === project.titles.length - 1 ? 'text-white/85' : '',
+                                                                      project.titles.length === 1 ? 'text-white/85' : ''">
+                                                            {{ title }}
+                                                            <span v-if="index !== project.titles.length - 1"> > </span>
+                                                        </span>
+                                                        {{ project.content }}
+                                                    </template>
+                                                    {{ project.title ? project.title : project.content }}
+                                                </span>
                                                 <span v-if="active"
-                                                      class="ml-3 flex-none text-gray-400">Jump to...</span>
-                                            </li>
-                                        </ComboboxOption>
-                                    </ul>
-                                </li>
-                                <li v-if="query === ''" class="p-2">
-                                    <h2 class="sr-only">Quick actions</h2>
-                                    <ul class="text-sm text-gray-400">
-                                        <ComboboxOption v-for="action in quickActions" :key="action.shortcut"
-                                                        :value="action" as="template" v-slot="{ active }">
-                                            <li :class="['flex cursor-default select-none items-center rounded-md px-3 py-2', active && 'bg-gray-800 text-white']">
-                                                <component :is="action.icon"
-                                                           :class="['h-6 w-6 flex-none', active ? 'text-white' : 'text-gray-500']"
-                                                           aria-hidden="true"/>
-                                                <span class="ml-3 flex-auto truncate">{{ action.name }}</span>
-                                                <span class="ml-3 flex-none text-xs font-semibold text-gray-400">
-                          <kbd class="font-sans">⌘</kbd>
-                          <kbd class="font-sans">{{ action.shortcut }}</kbd>
-                        </span>
+                                                      class="ml-3 flex-none text-gray-400">Aller voir..</span>
                                             </li>
                                         </ComboboxOption>
                                     </ul>
@@ -116,9 +109,8 @@ function onSelect(item) {
 
                             <div v-if="query !== '' && filteredProjects.length === 0"
                                  class="px-6 py-14 text-center sm:px-14">
-                                <FolderIcon class="mx-auto h-6 w-6 text-gray-500" aria-hidden="true"/>
-                                <p class="mt-4 text-sm text-gray-200">We couldn't find any projects with that term.
-                                    Please try again.</p>
+                                <WindowIcon class="mx-auto h-6 w-6 text-gray-500" aria-hidden="true"/>
+                                <p class="mt-4 text-sm text-gray-200">Nous n'avons rien trouvé correspondant à votre recherche</p>
                             </div>
                         </Combobox>
                     </DialogPanel>

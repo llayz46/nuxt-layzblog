@@ -45,15 +45,15 @@ body::before {
     animation: noisy 6s steps(10) infinite;
 }
 
-body::-webkit-scrollbar {
+body::-webkit-scrollbar, .scrollbar::-webkit-scrollbar {
     width: 10px;
 }
 
-body::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track, .scrollbar::-webkit-scrollbar-track {
     background: theme('colors.my-background');
 }
 
-body::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb, .scrollbar::-webkit-scrollbar-thumb {
     background-color: #343a3f;
     border-radius: 20px;
     border: 2px solid theme('colors.my-background');

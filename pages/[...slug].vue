@@ -1,55 +1,79 @@
 <script setup lang="ts">
-    const {slug} = useRoute().params
-    const path = `/articles/${slug}`
+import FooterArticleCard from "~/components/FooterArticleCard.vue";
 
-    const route = useRoute()
-    const { data: article } = await useAsyncData(path, () => {
-        return queryCollection('articles').path(route.path).first()
-    })
+const {slug} = useRoute().params
+const path = `/articles/${slug}`
 
-    useHead({
-        title: article.value.title + ' | llayz',
-        meta: [
-            { name: 'description', content: article.value.description || 'Explorez les articles couvrant le développement web moderne avec des guides pratiques et des tutoriels.' },
-            { name: 'keywords', content: 'développement web, Laravel, Vue.js, Livewire, Nuxt.js, guide, Php, dev web, llayz, how to, tuto' },
-            { property: 'og:title', content: article.value.title + ' | llayz' },
-            { property: 'og:description', content: article.value.description || 'Découvrez des articles passionnants sur le développement web.' },
-            { property: 'og:type', content: 'article' },
-            { property: 'og:url', content: 'https://llayz.fr' + route.fullPath },
-            { property: 'og:image', content: article.value.imageUrl || 'https://llayz.fr/favicon.ico' },
-            { name: 'twitter:card', content: 'summary_large_image' },
-            { name: 'twitter:title', content: article.value.title + ' | llayz' },
-            { name: 'twitter:description', content: article.value.description || 'Découvrez des articles passionnants sur le développement web.' },
-            { name: 'twitter:image', content: article.value.imageUrl || 'https://llayz.fr/favicon.ico' }
-        ]
-    });
+const route = useRoute()
+const {data: article} = await useAsyncData(path, () => {
+    return queryCollection('articles').path(route.path).first()
+})
 
-    useSeoMeta({
-        title: article.value.title + ' | llayz',
-        description: article.value.description || 'Explorez des articles couvrant le développement web moderne avec des guides pratiques et des tutoriels.',
-        ogTitle: article.value.title + ' | llayz',
-        ogDescription: article.value.description || 'Découvrez des articles passionnants sur le développement web.',
-        ogImage: article.value.imageUrl || 'https://llayz.fr/favicon.ico',
-        ogUrl: 'https://llayz.fr' + route.fullPath,
-        twitterCard: 'summary_large_image',
-        twitterTitle: article.value.title + ' | llayz',
-        twitterDescription: article.value.description || 'Découvrez des articles passionnants sur le développement web.',
-        twitterImage: article.value.imageUrl || 'https://llayz.fr/favicon.ico'
-    });
+useHead({
+    title: article.value.title + ' | llayz',
+    meta: [
+        {
+            name: 'description',
+            content: article.value.description || 'Explorez les articles couvrant le développement web moderne avec des guides pratiques et des tutoriels.'
+        },
+        {
+            name: 'keywords',
+            content: 'développement web, Laravel, Vue.js, Livewire, Nuxt.js, guide, Php, dev web, llayz, how to, tuto'
+        },
+        {property: 'og:title', content: article.value.title + ' | llayz'},
+        {
+            property: 'og:description',
+            content: article.value.description || 'Découvrez des articles passionnants sur le développement web.'
+        },
+        {property: 'og:type', content: 'article'},
+        {property: 'og:url', content: 'https://llayz.fr' + route.fullPath},
+        {property: 'og:image', content: article.value.imageUrl || 'https://llayz.fr/favicon.ico'},
+        {name: 'twitter:card', content: 'summary_large_image'},
+        {name: 'twitter:title', content: article.value.title + ' | llayz'},
+        {
+            name: 'twitter:description',
+            content: article.value.description || 'Découvrez des articles passionnants sur le développement web.'
+        },
+        {name: 'twitter:image', content: article.value.imageUrl || 'https://llayz.fr/favicon.ico'}
+    ]
+});
+
+useSeoMeta({
+    title: article.value.title + ' | llayz',
+    description: article.value.description || 'Explorez des articles couvrant le développement web moderne avec des guides pratiques et des tutoriels.',
+    ogTitle: article.value.title + ' | llayz',
+    ogDescription: article.value.description || 'Découvrez des articles passionnants sur le développement web.',
+    ogImage: article.value.imageUrl || 'https://llayz.fr/favicon.ico',
+    ogUrl: 'https://llayz.fr' + route.fullPath,
+    twitterCard: 'summary_large_image',
+    twitterTitle: article.value.title + ' | llayz',
+    twitterDescription: article.value.description || 'Découvrez des articles passionnants sur le développement web.',
+    twitterImage: article.value.imageUrl || 'https://llayz.fr/favicon.ico'
+});
 </script>
 
 <template>
     <div class="max-w-3xl mx-auto">
-        <Breadcrumb v-if="article" :pages="[{ name: 'Blog', href: '/blog' }, { name: article.title, href: null }]" />
+        <Breadcrumb v-if="article" :pages="[{ name: 'Blog', href: '/blog' }, { name: article.title, href: null }]"/>
 
         <div class="mt-12 text-xs text-white/50">
-            <NuxtTime v-if="article" :datetime="article.meta.date as string" month="long" day="numeric" year="numeric" locale="fr" />
+            <NuxtTime v-if="article" :datetime="article.meta.date as string" month="long" day="numeric" year="numeric" locale="fr"/>
         </div>
 
-        <ContentRenderer v-if="article" :value="article" tag="article" class="content !max-w-3xl mt-2 pb-32 overflow-visible" />
+        <ContentRenderer v-if="article" :value="article" tag="article" class="content !max-w-3xl mt-2 pb-16 overflow-visible"/>
+
+        <footer class="border-t border-white/10 flex flex-wrap justify-between pb-96">
+            <FooterArticleCard :path="article.path" :slug="article.meta.slug" :description="article.description" :date="article.date" :tags="article.meta.tags"/>
+            <FooterArticleCard :path="article.path" :slug="article.meta.slug" :description="article.description" :date="article.date" :tags="article.meta.tags"/>
+            <FooterArticleCard :path="article.path" :slug="article.meta.slug" :description="article.description" :date="article.date" :tags="article.meta.tags"/>
+            <FooterArticleCard :path="article.path" :slug="article.meta.slug" :description="article.description" :date="article.date" :tags="article.meta.tags"/>
+            <FooterArticleCard :path="article.path" :slug="article.meta.slug" :description="article.description" :date="article.date" :tags="article.meta.tags"/>
+            <FooterArticleCard :path="article.path" :slug="article.meta.slug" :description="article.description" :date="article.date" :tags="article.meta.tags"/>
+        </footer>
     </div>
 
     <TableOfContent v-if="article" :toc="article.body.toc"/>
+
 </template>
 
 <style scoped>
