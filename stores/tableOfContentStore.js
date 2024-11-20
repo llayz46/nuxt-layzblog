@@ -6,6 +6,11 @@ export const useTableOfContentStore = defineStore('table-of-content', () => {
     }
 
     return { open, toggle }
+},
+{
+    persist: {
+        storage: piniaPluginPersistedstate.localStorage(),
+    }
 })
 
 if (import.meta.hot) {
