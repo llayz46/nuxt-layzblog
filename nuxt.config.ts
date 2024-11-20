@@ -8,7 +8,8 @@ export default defineNuxtConfig({
       '@nuxtjs/tailwindcss',
       '@nuxtjs/google-fonts',
       '@vueuse/motion/nuxt',
-      'nuxt-time'
+      'nuxt-time',
+      '@pinia/nuxt'
     ],
 
     routeRules: {
@@ -16,7 +17,7 @@ export default defineNuxtConfig({
     },
 
     googleFonts: {
-        // download: true,
+        download: true,
         families: {
             'Space Grotesk': '300..700',
             'DM Sans': '300..700'

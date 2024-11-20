@@ -15,7 +15,7 @@ useHead({
         { property: 'og:url', content: 'https://llayz.fr/blog' },
         { property: 'twitter:title', content: 'Blog | llayz' },
         { property: 'twitter:description', content: 'Accédez à des articles riches en contenu pour les développeurs, allant des bases aux technologies modernes.' },
-        { property: 'twitter:image', content: 'https://llayz.fr/favicon.ico' }, // Même URL pour Twitter
+        { property: 'twitter:image', content: 'https://llayz.fr/favicon.ico' },
         { property: 'twitter:card', content: 'summary_large_image' }
     ]
 });

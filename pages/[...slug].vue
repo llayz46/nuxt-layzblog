@@ -80,7 +80,6 @@ useSeoMeta({
     </div>
 
     <TableOfContent v-if="article" :toc="article.body.toc"/>
-
 </template>
 
 <style scoped>
