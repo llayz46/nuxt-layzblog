@@ -1,9 +1,11 @@
 ---
 title: 'About !'
 slug: 'about'
+description: 'Super article sur pourquoi la vie et pourquoi le monde.'
 date: 2024-11-16
 draft: false
 tags: [ "dev", "test" ]
+thumbnail: 'about.jpg'
 ---
 ## 2. PHP Natif : les bases de la dynamique
 

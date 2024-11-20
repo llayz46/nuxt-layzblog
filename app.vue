@@ -12,11 +12,13 @@ html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    height: 100%;
 }
 body {
     background-color: theme('colors.my-background');
     color: rgba(255, 255, 255, 0.75);
     font-family: 'Space Grotesk', sans-serif;
+    height: 100%;
 }
 
 body::before {

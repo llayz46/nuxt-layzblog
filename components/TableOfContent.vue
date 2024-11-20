@@ -17,7 +17,7 @@
         enter-active-class="transition ease-linear duration-150"
         enter-from-class="opacity-0 scale-95"
         enter-to-class="opacity-100 scale-100">
-        <div v-show="show" class="fixed top-0 right-0 mt-16 mr-3 max-w-80 backdrop-blur-md bg-my-background/10 border border-white/10 rounded-xl p-5">
+        <div v-show="show" class="fixed top-0 right-0 mt-16 mr-3 w-80 backdrop-blur-md bg-my-background/10 border border-white/10 rounded-xl p-5">
             <button @click="show = false" class="absolute top-0 right-0 p-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-white/50 hover:text-white transition-colors">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
