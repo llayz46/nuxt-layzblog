@@ -9,6 +9,16 @@ const {data: article} = await useAsyncData(path, () => {
     return queryCollection('articles').path(route.path).first()
 })
 
+const {data: articles} = await useAsyncData('articles', () => {
+    return queryCollection('articles')
+        .where('path', '!=', route.path)
+        .all()
+})
+const targetTags = article.value.meta.tags
+articles.value = articles.value.filter((a) => {
+    return a.meta.tags.some(tag => targetTags.includes(tag))
+})
+
 useHead({
     title: article.value.title + ' | llayz',
     meta: [
@@ -62,13 +72,10 @@ useSeoMeta({
 
         <ContentRenderer v-if="article" :value="article" tag="article" class="content !max-w-3xl mt-2 pb-16 overflow-visible"/>
 
-        <footer class="border-t border-white/10 flex flex-wrap justify-between pb-96">
-            <FooterArticleCard :path="article.path" :slug="article.meta.slug" :description="article.description" :date="article.date" :tags="article.meta.tags"/>
-            <FooterArticleCard :path="article.path" :slug="article.meta.slug" :description="article.description" :date="article.date" :tags="article.meta.tags"/>
-            <FooterArticleCard :path="article.path" :slug="article.meta.slug" :description="article.description" :date="article.date" :tags="article.meta.tags"/>
-            <FooterArticleCard :path="article.path" :slug="article.meta.slug" :description="article.description" :date="article.date" :tags="article.meta.tags"/>
-            <FooterArticleCard :path="article.path" :slug="article.meta.slug" :description="article.description" :date="article.date" :tags="article.meta.tags"/>
-            <FooterArticleCard :path="article.path" :slug="article.meta.slug" :description="article.description" :date="article.date" :tags="article.meta.tags"/>
+        <footer class="border-t border-white/10 grid grid-cols-3 gap-4 pb-96">
+            <template v-if="articles" v-for="a in articles">
+                <FooterArticleCard :path="a.path" :slug="a.meta.slug" :description="a.description" :date="a.date" :tags="a.meta.tags"/>
+            </template>
         </footer>
     </div>
 
