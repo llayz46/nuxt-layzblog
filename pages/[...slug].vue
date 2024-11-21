@@ -72,10 +72,14 @@ useSeoMeta({
 
         <ContentRenderer v-if="article" :value="article" tag="article" class="content !max-w-3xl mt-2 pb-16 overflow-visible"/>
 
-        <footer class="border-t border-white/10 grid grid-cols-3 gap-4 pb-96">
-            <template v-if="articles" v-for="a in articles">
-                <FooterArticleCard :path="a.path" :slug="a.meta.slug" :description="a.description" :date="a.date" :tags="a.meta.tags"/>
-            </template>
+        <footer class="border-t border-white/10 pb-20">
+            <div class="grid grid-cols-3 gap-4 pb-12">
+                <template v-if="articles" v-for="a in articles">
+                    <FooterArticleCard :path="a.path" :slug="a.meta.slug" :description="a.description" :date="a.date" :tags="a.meta.tags"/>
+                </template>
+            </div>
+
+            <p class="text-sm text-white/50 text-center">llayz © 2024</p>
         </footer>
     </div>
 
