@@ -34,7 +34,7 @@ useSeoMeta({
 </script>
 
 <template>
-    <ul class="max-w-5xl h-full px-4 pt-4 pb-10 md:pb-20 overflow-hidden mx-auto grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <ul class="max-w-5xl mx-auto h-full px-4 pt-4 pb-10 md:pb-20 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         <li v-for="article in articles" :key="article.path">
             <NuxtLink :to="article.path">
                 <CardSpotlight
