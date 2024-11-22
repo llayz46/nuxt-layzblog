@@ -10,7 +10,10 @@ const {data: article} = await useAsyncData(route.path, () => {
 if (!article.value) {
     throw createError({
         statusCode: 404,
-        statusMessage: 'Page Not Found'
+        statusMessage: 'Page introuvable',
+        data: {
+            message: 'Désolé, la page que vous recherchez n\'existe pas. Peut-être que l\'article a été déplacé ou supprimé.'
+        },
     })
 }
 
