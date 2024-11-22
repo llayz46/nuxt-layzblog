@@ -1,9 +1,11 @@
 ---
 title: 'Exemple de titre' // Titre de l'article (h1) & nom dans breadcrumb & titre de la page
 slug: 'exemple-slug' // Slug de l'article
+description: "Ma roadmap pour devenir développeur web en 2024, des bases HTML/CSS à Laravel et Vue.js."
 date: 2024-11-16
 draft: false // Brouillon ou non
 tags: ["dev", "articles", "web", "roadmap"]
+thumbnail: 'devenir-developpeur-web-2024-roadmap.png'
 ---
 # {{ $doc.title }}
 
@@ -47,4 +49,12 @@ The code in this next section is a simplified version of the code I use on my we
 
 ::callout{type="note"}
 The code in this next section is a simplified version of the code I use on my website; this makes it easier to understand, but it's not the actual code I use. The whole thing is linked below.
+::
+
+::callout{type="astuce" dropdown=true title="Une fois NGINX installer les différentes commandes suivantes sont disponibles :"}
+Contenu du callout
+```bash
+sudo systemctl status nginx
+```
+[Docs DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-debian-11)
 ::

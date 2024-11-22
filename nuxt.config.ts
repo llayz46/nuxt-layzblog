@@ -4,13 +4,15 @@ export default defineNuxtConfig({
     devtools: {enabled: true},
 
     modules: [
-        '@nuxt/content',
-        '@nuxtjs/tailwindcss',
-        '@nuxtjs/google-fonts',
-        '@vueuse/motion/nuxt',
-        'nuxt-time',
-        '@pinia/nuxt',
-        'pinia-plugin-persistedstate/nuxt',
+      '@nuxt/content',
+      '@nuxtjs/tailwindcss',
+      '@nuxtjs/google-fonts',
+      '@vueuse/motion/nuxt',
+      'nuxt-time',
+      '@pinia/nuxt',
+      'pinia-plugin-persistedstate/nuxt',
+      'nuxt-gtag',
+      'shadcn-nuxt'
     ],
 
     routeRules: {
@@ -61,6 +63,15 @@ export default defineNuxtConfig({
                 },
             },
         }
+    },
+
+    gtag: {
+        id: 'G-MMNC5MJS27'
+    },
+
+    shadcn: {
+        prefix: '',
+        componentDir: './components/ui'
     },
 
     compatibilityDate: '2024-11-16'

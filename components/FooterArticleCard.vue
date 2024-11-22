@@ -17,7 +17,7 @@ defineProps<{
             </div>
             <p class="overflow-hidden truncate text-sm text-white/70">{{ description }}</p>
             <div class="flex h-5 gap-2">
-                <template v-if="tags" v-for="tag in tags">
+                <template v-if="tags" v-for="tag in tags.slice(0, 6)">
                     <span class="max-w-[64px] truncate text-xs text-white/30"><span class="text-my-primary-700/45 font-medium">#</span>{{ tag }}</span>
                 </template>
             </div>

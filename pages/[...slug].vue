@@ -88,6 +88,6 @@ useSeoMeta({
 
 <style scoped>
 .content {
-    @apply prose prose-invert md:prose-lg prose-p:font-sans prose-p:text-base prose-p:mb-4 prose-a:no-underline prose-a:font-bold prose-hr:my-10 prose-hr:border-white/10 before:prose-p:content-none after:prose-p:content-none;
+    @apply prose prose-invert md:prose-lg prose-p:font-sans prose-p:text-base prose-p:mb-4 prose-a:no-underline prose-a:font-bold prose-hr:my-10 prose-hr:border-white/10 before:prose-p:content-none after:prose-p:content-none prose-li:text-base;
 }
 </style>
