@@ -16,7 +16,7 @@ if (!article.value) {
 
 const {data: articles} = await useAsyncData('articles', () => {
     return queryCollection('articles')
-        .where('path', '!=', route.path)
+        .where('path', '!=', `/${route.params.slug}`)
         .all()
 })
 
