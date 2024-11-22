@@ -1,23 +1,31 @@
 <script setup lang="ts">
 import FooterArticleCard from "~/components/FooterArticleCard.vue";
 
-const {slug} = useRoute().params
-const path = `/articles/${slug}`
-
 const route = useRoute()
-const {data: article} = await useAsyncData(path, () => {
-    return queryCollection('articles').path(route.path).first()
+
+const {data: article} = await useAsyncData(route.path, () => {
+    return queryCollection('articles').path(`/${route.params.slug}`).first()
 })
+
+if (!article.value) {
+    throw createError({
+        statusCode: 404,
+        statusMessage: 'Page Not Found'
+    })
+}
 
 const {data: articles} = await useAsyncData('articles', () => {
     return queryCollection('articles')
         .where('path', '!=', route.path)
         .all()
 })
-const targetTags = article.value.meta.tags
-articles.value = articles.value.filter((a) => {
-    return a.meta.tags.some(tag => targetTags.includes(tag))
-})
+
+if (articles.value) {
+    const targetTags = article.value.meta.tags
+    articles.value = articles.value.filter((a) => {
+        return a.meta.tags.some(tag => targetTags.includes(tag))
+    })
+}
 
 useHead({
     title: article.value.title + ' | llayz',
