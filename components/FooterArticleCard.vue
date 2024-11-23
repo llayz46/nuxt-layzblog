@@ -9,7 +9,7 @@ defineProps<{
 </script>
 
 <template>
-    <NuxtLink :to="path" class="relative w-full !text-white/75 duration-150 hover:scale-[1.01] hover:shadow-lg active:scale-[0.99] mt-4">
+    <NuxtLink :to="`/blog${path}`" class="relative w-full !text-white/75 duration-150 hover:scale-[1.01] hover:shadow-lg active:scale-[0.99] mt-4">
         <div class="flex h-24 flex-col justify-between gap-1 overflow-hidden rounded-lg border-t-2 border-[#1e242f40] bg-[#1e242f40] px-4 py-2 shadow-md duration-150 hover:border-t-2 hover:border-my-primary-900/75 hover:bg-[#1e242f80]">
             <div class="flex flex-row items-center justify-between gap-5">
                 <h2 class="z-10 truncate font-bold drop-shadow-md">{{ slug }}</h2>
