@@ -5,6 +5,7 @@
             <NuxtPage/>
         </NuxtLayout>
     </div>
+    <Toaster />
 </template>
 
 <style>
