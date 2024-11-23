@@ -68,21 +68,21 @@ const iconMap = ref<IconMap>({
     code: CodeBracketIcon
 });
 
-const dropdownOpen = ref(false);
+const dropdownIcon = ref(false);
 </script>
 
 <template>
     <Accordion v-if="dropdown" type="single" collapsible>
         <AccordionItem value="item-1">
-            <div class="callout border-s-4 pl-5 my-8 text-base font-medium italic rounded-e-md"
+            <div class="callout border-s-4 pl-5 my-8 text-base font-medium italic rounded-e-md" @click="dropdownIcon = !dropdownIcon"
                  :class="[typeClasses[type]?.border, typeClasses[type]?.background, typeClasses[type]?.selection, typeClasses[type]?.blockquote]">
                 <AccordionTrigger>
-                    <div class="flex gap-1 items-center" :class="typeClasses[type]?.text" @click="dropdownOpen = ! dropdownOpen">
+                    <div class="flex gap-1 items-center" :class="typeClasses[type]?.text">
                         <component :is="iconMap[type]" class="size-6"></component>
                         <span class="text-base leading-none font-semibold italic pr-1">
                             {{ title }}
                         </span>
-                        <ChevronRightIcon class="size-4 transition-transform duration-300" :class="{ 'rotate-90': dropdownOpen }" />
+                        <ChevronRightIcon class="size-4 transition-transform duration-300" :class="{ 'rotate-90': dropdownIcon }" />
                     </div>
                 </AccordionTrigger>
 
