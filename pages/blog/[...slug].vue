@@ -74,7 +74,7 @@ useSeoMeta({
 </script>
 
 <template>
-    <div class="max-w-3xl mx-auto">
+    <div class="max-md:px-6 max-w-3xl mx-auto">
         <Breadcrumb v-if="article" :pages="[{ name: 'Blog', href: '/blog' }, { name: article.title, href: null }]"/>
 
         <div class="mt-12 text-xs text-white/50">
@@ -99,6 +99,6 @@ useSeoMeta({
 
 <style scoped>
 .content {
-    @apply prose prose-invert md:prose-lg prose-p:font-sans prose-p:text-base prose-p:mb-4 prose-a:no-underline prose-a:font-bold prose-hr:my-10 prose-hr:border-white/10 before:prose-p:content-none after:prose-p:content-none prose-li:text-base;
+    @apply prose prose-invert md:prose-lg prose-p:font-sans prose-p:text-base prose-p:mb-4 prose-a:no-underline prose-a:font-bold prose-hr:my-10 prose-hr:border-white/10 before:prose-p:content-none after:prose-p:content-none prose-li:text-base prose-headings:text-wrap;
 }
 </style>
