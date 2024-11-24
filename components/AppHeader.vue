@@ -13,7 +13,7 @@ const showSearchModal = ref(false);
                 </NuxtLink>
             </div>
             <div class="flex items-center gap-5">
-                <AppHeaderLink route="/">Projets</AppHeaderLink>
+<!--                <AppHeaderLink route="/">Projets</AppHeaderLink>-->
                 <AppHeaderLink route="/blog" >Blog</AppHeaderLink>
                 <MagnifyingGlassIcon class="size-4 hover:text-white transition-colors cursor-pointer" @click.prevent="showSearchModal = true"/>
             </div>
