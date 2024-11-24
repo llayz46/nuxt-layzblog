@@ -84,7 +84,7 @@ const dropdownIcon = ref(false);
                             {{ title }}
                         </span>
                         <span class="text-base leading-none font-semibold italic pr-1 capitalize sm:hidden">
-                            {{ type }}
+                            {{ title.length < 15 ? title : type }}
                         </span>
 
                         <ChevronRightIcon class="size-4 transition-transform duration-300" :class="{ 'rotate-90': dropdownIcon }" />
@@ -92,7 +92,7 @@ const dropdownIcon = ref(false);
                 </AccordionTrigger>
 
                 <AccordionContent>
-                    <template v-if="title.toLowerCase() != type.toLowerCase()">
+                    <template v-if="title && title.toLowerCase() !== type.toLowerCase() && title.length > 15">
                         <p class="sm:hidden !mt-0">{{ title }}</p>
                     </template>
 
