@@ -28,7 +28,7 @@ const { data: articles } = await useAsyncData('documents-list', () => {
             <li v-for="article in articles" :key="article.path">
                 <NuxtLink :to="`/blog${article.path}`">
                     <CardSpotlight
-                        class="cursor-pointer items-center justify-center text-4xl shadow-2xl hover:scale-105 transition-transform duration-300 group"
+                        class="cursor-pointer items-center justify-center text-4xl shadow-2xl hover:scale-105 transition-transform duration-300 group text-left"
                         gradient-color="#ffffff0A"
                     >
                         <div class="flex justify-between items-center">

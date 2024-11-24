@@ -79,14 +79,23 @@ const dropdownIcon = ref(false);
                 <AccordionTrigger>
                     <div class="flex gap-1 items-center" :class="typeClasses[type]?.text">
                         <component :is="iconMap[type]" class="size-6"></component>
-                        <span class="text-base leading-none font-semibold italic pr-1">
+
+                        <span class="text-base leading-none font-semibold italic pr-1 max-sm:hidden">
                             {{ title }}
                         </span>
+                        <span class="text-base leading-none font-semibold italic pr-1 capitalize sm:hidden">
+                            {{ type }}
+                        </span>
+
                         <ChevronRightIcon class="size-4 transition-transform duration-300" :class="{ 'rotate-90': dropdownIcon }" />
                     </div>
                 </AccordionTrigger>
 
                 <AccordionContent>
+                    <template v-if="title.toLowerCase() != type.toLowerCase()">
+                        <p class="sm:hidden !mt-0">{{ title }}</p>
+                    </template>
+
                     <p class="!my-0 !mt-0 prose-p:!mt-0 prose-ul:!mt-0 prose-blockquote:!mt-2 prose-code:!text-sm !pr-5" :class="{ 'not-italic': !italic }">
                         <MDCSlot />
                     </p>
