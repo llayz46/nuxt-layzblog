@@ -24,7 +24,8 @@ sous Debian ou Ubuntu.
 ## 0. Prérequis & informations
 
 1. Un serveur de type VPS, HomeLab ou autre, fonctionnant de préférence sous Debian ou Ubuntu.
-2. Rien ne vous oblige à utiliser MySQL par exemple, chaque étape peut-être modifier.
+2. Rien ne vous oblige à utiliser MySQL par exemple, chaque étape peut-être modifiée.
+3. Pour copier/coller les commandes, vous pouvez utiliser `Shift + Insert` pour coller.
 
 ---
 
@@ -163,31 +164,31 @@ sudo apt update
 Ensuite, installons la bonne version de PHP ainsi que la dépendance de la BDD :
 
 ```bash
-sudo apt-get install php8.3-fpm php8.3-mysql
+sudo apt-get install php8.4-fpm php8.4-mysql
 ```
 
-*Remplacer `php8.3-mysql` par votre `driver` de base de donnée. Et n'oubliez pas d'activer les extensions dans votre php.ini : `/etc/php/8.3/fpm/php.ini`.*
+*Remplacer `php8.4-mysql` par votre `driver` de base de donnée. Et n'oubliez pas d'activer les extensions dans votre php.ini : `/etc/php/8.4/fpm/php.ini`.*
 
 ::callout{type="astuce" dropdown=true title="Astuce"}
 > Pour vérifier que PHP est bien installé, utilisé la commande :
 > ```bash
 > php -v
 > ```
-> *Vous devriez voir écrit : "PHP 8.3.0" ou votre version de PHP*
+> *Vous devriez voir écrit : "PHP 8.4.0" ou votre version de PHP*
 
 > Pour vérifier que PHP-FPM est bien actif :
 > ```bash
-> sudo systemctl status php8.3-fpm
+> sudo systemctl status php8.4-fpm
 > ```
 ::
 
 Vous pouvez installer toutes les extensions que vous souhaitez, voici quelques exemples :
 
 ```bash
-sudo apt install php8.3-mbstring php8.3-xml php8.3-bcmath php8.3-curl
+sudo apt install php8.4-mbstring php8.4-xml php8.4-bcmath php8.4-curl php8.4-zip
 ```
 ::underpre
-*(remplacé 8.3 par votre version)*
+*(remplacé 8.4 par votre version)*
 ::
 
 ---
@@ -213,6 +214,13 @@ sudo apt-get install apt-transport-https lsb-release ca-certificates wget
 ```bash
 sudo apt install ./mysql-apt-config_0.8.30-1_all.deb
 ```
+::underpre
+Vous verrez un message vous demandant de choisir la version de MySQL que vous souhaitez installer. Choisissez la version voulue puis valider avec **flèche de droite** ensuite **espace**.
+::
+
+```bash
+sudo apt-get update
+```
 
 ```bash
 sudo apt install mysql-server
@@ -234,7 +242,7 @@ Pour sécuriser l'installation de MySQL, exécutez la commande suivante :
 sudo mysql_secure_installation
 ```
 
-La commande vous demandera si vous souhaitez activer unix_socket, si vous souhaitez utiliser un mot de passe, répondez "n" :
+Si la commande vous demande d'activer unix_socket mais que vous souhaitez utiliser un mot de passe, répondez "n" :
 
 ```bash
 Switch to unix_socket authentication [Y/n] n
@@ -245,9 +253,16 @@ Ensuite, créons un compte administrateur pour accéder à MySQL :
 ```bash
 sudo mysql
 ```
+::underpre
+Ajoutez le *flag* -p si vous avez un mot de passe pour l'utilisateur root.
+::
 
 ```sql
-GRANT ALL ON *.* TO 'user'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
+CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
+```
+
+```sql
+GRANT ALL PRIVILEGES ON *.* TO 'user'@'localhost' WITH GRANT OPTION;
 ```
 
 ```sql
@@ -337,19 +352,19 @@ sudo -u postgres psql
 \password postgres
 ```
 ::underpre
-Saisissez le nouveau mot de passe puis quitter avec **\q**.
+Entrez un nouveau mot de passe, confirmer le puis quitter avec **\q**.
 ::
 
 Enfin, pour que PHP puisse se connecter à PostgreSQL, nous devons installer l'extension PHP :
 
 ```bash
-sudo apt install php8.3-pgsql
+sudo apt install php8.4-pgsql
 ```
 
 Enfin, redémarrons PHP-FPM :
 
 ```bash
-sudo systemctl restart php8.3-fpm
+sudo systemctl restart php8.4-fpm
 ```
 
 ### SQLite
@@ -503,13 +518,36 @@ GRANT ALL PRIVILEGES ON DATABASE nom_de_votre_base TO nom_utilisateur;
 
 ---
 
-## 7. Installer PHP CLI et Composer
+## 7. Installer Node et Composer
 
-1. Installer PHP CLI :
+1. Installer Node.js via nvm :
 
-```bash
-sudo apt install php8.3-cli unzip
-```
+    1. Installer nvm :
+
+    ```bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+    ```
+
+    2. Ajouter nvm à votre fichier `.bashrc` :
+
+    ```bash
+    source ~/.bashrc
+    ```
+
+    3. Lister les versions de Node.js disponibles :
+
+    ```bash
+    nvm ls-remote
+    ```
+   
+    4. Installer la dernière version LTS de Node.js :
+
+    ```bash
+    nvm install --lts
+    ```
+    ::underpre
+    *Pour installer une version spécifique, remplacez `--lts` par le numéro de version souhaité.*
+    ::
 
 2. Installer Composer :
 
@@ -520,7 +558,13 @@ curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
 3. Déplacer Composer :
 
 ```bash
-sudo php8.3 /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+sudo php8.4 /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+```
+
+4. Vérifier l'installation :
+
+```bash
+composer --version && node -v && npm -v
 ```
 
 ---
@@ -535,11 +579,14 @@ Pour ce faire, nous aurons besoin dans un premier temps de créer une clé SSH e
 ssh-keygen -t ed25519 -C "Nom"
 ```
 
-2. Ensuite, copions le contenu de la clé publique :
+2. Ensuite, affichons puis copions le contenu de la clé publique :
 
 ```bash
 cat ~/.ssh/id_ed25519.pub
 ```
+::underpre
+Sélectionner l'entièreté du contenu afficher puis copier le.
+::
 
 3. Ajouter la clé SSH dans GIT :
 
@@ -553,7 +600,7 @@ sudo apt install git
 
 5. Cloner le projet :
 
-Naviguer jusqu'à l'endroit où vous souhaitez ajouter votre projet, habituellement /var/www/ et cloner votre dépôt grâce à la méthode SSH de GIT :
+Naviguer jusqu'à l'endroit où vous souhaitez ajouter votre projet, habituellement **/var/www/** et cloner votre dépôt grâce à la méthode SSH de GIT :
 
 ```bash
 git clone git@github.com:llayz46/<depot>.git
@@ -598,7 +645,7 @@ sudo nano /etc/nginx/sites-available/monsite
 > 
 > Pour voir votre version : php-v.
 > 
-> `fastcgi_pass` unix:/var/run/php/php8.3-fpm.sock;
+> `fastcgi_pass` unix:/var/run/php/php8.4-fpm.sock;
 ::
 
 ### Version HTTP
@@ -640,30 +687,9 @@ server {
 ```
 
 ### Version HTTPS
-::callout{type="note" dropdown=true title="Prérequis"}
-> **Certbot** doit être installé pour la version HTTPS.
-> ```bash
-> sudo apt install certbot python3-certbot-nginx
-> ```
-
-> Vous devez ensuite obtenir un certificat SSL pour votre domaine :
-> ```bash
-> sudo certbot --nginx -d nom_de_domaine -d www.nom_de_domaine
-> ```
-
-> Pour finir, vous devez donner les permissions nécessaires à NGINX pour accéder aux certificats :
-> ```bash
-> sudo chown root:root /etc/letsencrypt/live/nom_de_domaine/{fullchain.pem,privkey.pem}
-> ```
-> ```bash
-> sudo chmod 600 /etc/letsencrypt/live/nom_de_domaine/{fullchain.pem,privkey.pem}
-> ```
-> *Remplacer `nom_de_domaine` par votre nom de domaine sans les `www`.*
-::
-
 ```nginx
 server {
-        listen 443 ssl http2 default_server;
+        listen 443 ssl http2 default_server; # default_server permet de définir ce serveur comme serveur par défaut
         listen [::]:443 ssl http2 default_server ipv6only=on;
 
         root /var/www/<dossier_projet>/<dossier_public>;
@@ -702,6 +728,27 @@ server {
         access_log /var/log/nginx/your_domain_access.log;
 }
 ```
+
+::callout{type="note" dropdown=true title="Générer un certificat SSL"}
+> **Certbot** doit être installé pour la version HTTPS.
+> ```bash
+> sudo apt install certbot python3-certbot-nginx
+> ```
+
+> Vous devez ensuite obtenir un certificat SSL pour votre domaine :
+> ```bash
+> sudo certbot --nginx -d nom_de_domaine -d www.nom_de_domaine
+> ```
+
+> Pour finir, vous devez donner les permissions nécessaires à NGINX pour accéder aux certificats :
+> ```bash
+> sudo chown root:root /etc/letsencrypt/live/nom_de_domaine/{fullchain.pem,privkey.pem}
+> ```
+> ```bash
+> sudo chmod 600 /etc/letsencrypt/live/nom_de_domaine/{fullchain.pem,privkey.pem}
+> ```
+> *Remplacer `nom_de_domaine` par votre nom de domaine sans les `www`.*
+::
 
 3. Lier votre configuration à sites-enabled :
 
