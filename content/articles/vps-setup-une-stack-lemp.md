@@ -132,10 +132,67 @@ sudo ufw allow 'OpenSSH'
 ```bash
 sudo ufw enable
 ```
-    
+
 ---
 
-## 4. Installer et configurer une base de données
+## 4. Installer PHP et les extensions nécessaires
+
+Pour installer PHP ainsi que les extensions nécessaires au bon fonctionnement de notre serveur web, nous aurons besoin de quelques prérequis :
+
+D'abord, ajoutons le dépôt "Sury" pour PHP :
+
+
+1. Ajout de la clé au dépôt :
+
+```bash
+wget -qO - https://packages.sury.org/php/apt.gpg | sudo apt-key add -
+```
+
+2. Ajout du dépôt `Sury` à la liste des sources :
+
+```bash
+echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
+```
+
+3. Mettons à jour notre liste de paquets :
+
+```bash
+sudo apt update
+```
+
+Ensuite, installons la bonne version de PHP ainsi que la dépendance de la BDD :
+
+```bash
+sudo apt-get install php8.3-fpm php8.3-mysql
+```
+
+*Remplacer `php8.3-mysql` par votre `driver` de base de donnée. Et n'oubliez pas d'activer les extensions dans votre php.ini : `/etc/php/8.3/fpm/php.ini`.*
+
+::callout{type="astuce" dropdown=true title="Astuce"}
+> Pour vérifier que PHP est bien installé, utilisé la commande :
+> ```bash
+> php -v
+> ```
+> *Vous devriez voir écrit : "PHP 8.3.0" ou votre version de PHP*
+
+> Pour vérifier que PHP-FPM est bien actif :
+> ```bash
+> sudo systemctl status php8.3-fpm
+> ```
+::
+
+Vous pouvez installer toutes les extensions que vous souhaitez, voici quelques exemples :
+
+```bash
+sudo apt install php8.3-mbstring php8.3-xml php8.3-bcmath php8.3-curl
+```
+::underpre
+*(remplacé 8.3 par votre version)*
+::
+
+---
+
+## 5. Installer et configurer une base de données
 
 ### MySQL
 
@@ -178,7 +235,7 @@ sudo mysql_secure_installation
 ```
 
 La commande vous demandera si vous souhaitez activer unix_socket, si vous souhaitez utiliser un mot de passe, répondez "n" :
-    
+
 ```bash
 Switch to unix_socket authentication [Y/n] n
 ```
@@ -370,7 +427,9 @@ UPDATE user SET ROLES = REPLACE(ROLES, '[]', '["ROLE_ADMIN"]') WHERE id = 1;
 
 ---
 
-## 5. Créer une base de données (MySQL/MariaDB)
+## 6. Créer une base de données
+
+### MySQL ou MariaDB
 
 1. Entrer dans MySQL ou MariaDB :
 
@@ -406,60 +465,41 @@ GRANT ALL PRIVILEGES ON nom_de_la_base.* TO 'username'@'%';
 **GRANT ALL** donne tous les privilèges (SELECT, INSERT, UPDATE, DELETE, etc.) sur la base de données en question.
 ::
 
----
+### PostgreSQL
 
-## 6. Installer PHP et les extensions nécessaires
-
-Pour installer PHP ainsi que les extensions nécessaires au bon fonctionnement de notre serveur web, nous aurons besoin de quelques prérequis :
-
-D'abord, ajoutons le dépôt "Sury" pour PHP :
-
-1. Ajout de la clé au dépôt : 
+1. Entrer dans PostgreSQL :
 
 ```bash
-wget -qO - https://packages.sury.org/php/apt.gpg | sudo apt-key add -
+sudo -u postgres psql
 ```
 
-2. Ajout du dépôt `Sury` à la liste des sources :
-```bash
-echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
+2. Créer une base de données :
+
+```sql
+CREATE DATABASE nom_de_votre_base;
 ```
 
-3. Mettons à jour la liste des paquets :
+3. Créer un utilisateur pour cette base de données :
 
-```bash
-sudo apt update
+```sql
+CREATE USER nom_utilisateur WITH PASSWORD 'mot_de_passe';
 ```
 
-Ensuite, installons la bonne version de PHP ainsi que la dépendance de la BDD :
+4. Donner les droits à cet utilisateur sur la base de données :
 
-```bash
-sudo apt-get install php8.3-fpm php8.3-mysql
+```sql
+GRANT ALL PRIVILEGES ON DATABASE nom_de_votre_base TO nom_utilisateur;
 ```
 
-*Remplacer `php8.3-mysql` par votre `driver` de base de donnée. Et n'oubliez pas d'activez les extension dans votre php.ini : `/etc/php/8.3/fpm/php.ini`.*
-
-::callout{type="astuce" dropdown=true title="Astuce"}
-> Pour vérifier que PHP est bien installé, utilisé la commande :
-> ```bash
-> php -v
-> ```
-> *Vous devriez voir écrit : "PHP 8.3.0" ou votre version de PHP*
-
-> Pour vérifier que PHP-FPM est bien actif :
-> ```bash
-> sudo systemctl status php8.3-fpm
-> ```
+::callout{type="important" italic=true}
+**GRANT ALL** donne tous les privilèges (SELECT, INSERT, UPDATE, DELETE, etc.) sur la base de données en question.
 ::
 
-Vous pouvez installer toutes les extensions que vous souhaitez, voici quelques exemples :
+5. Quitter PostgreSQL :
 
-```bash
-sudo apt install php8.3-mbstring php8.3-xml php8.3-bcmath php8.3-curl
+```sql
+\q
 ```
-::underpre
-*(remplacé 8.3 par votre version)*
-::
 
 ---
 
