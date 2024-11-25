@@ -231,6 +231,70 @@ GRANT ALL ON *.* TO 'user'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTIO
 FLUSH PRIVILEGES;
 ```
 
+### PostgreSQL
+
+Pour installer PostgreSQL, commençons par mettre à jour notre liste de paquets :
+
+```bash
+sudo apt update && sudo apt upgrade
+```
+
+Ensuite, installons PostgreSQL :
+
+```bash
+sudo apt install postgresql postgresql-contrib
+```
+
+::callout{type="astuce" dropdown=true title="Astuce"}
+Une fois PostgreSQL installé, les commandes suivantes sont disponibles :
+
+> Vérifier le statut :
+> ```bash
+> sudo systemctl status postgresql
+> ```
+
+> Démarrer PostgreSQL :
+> ```bash
+> sudo systemctl start postgresql
+> ```
+
+> Arrêter PostgreSQL :
+> ```bash
+> sudo systemctl stop postgresql
+> ```
+::
+
+Pour configurer PostgreSQL, nous devons nous assurer qu'il est démarré :
+
+```bash
+sudo systemctl start postgresql && sudo systemctl enable postgresql
+```
+
+Ensuite, nous devons nous connecter à PostgreSQL. Par défaut, Postgre créer un utilisateur `postgres` au quelle nous allons nous connecter puis changer le mot de passe :
+
+```bash
+sudo -u postgres psql
+```
+
+```sql
+\password postgres
+```
+::underpre
+Saisissez le nouveau mot de passe puis quitter avec **\q**.
+::
+
+Enfin, pour que PHP puisse se connecter à PostgreSQL, nous devons installer l'extension PHP :
+
+```bash
+sudo apt install php8.3-pgsql
+```
+
+Enfin, redémarrons PHP-FPM :
+
+```bash
+sudo systemctl restart php8.3-fpm
+```
+
 ### SQLite
 
 Commençons par installer SQLite :
