@@ -10,6 +10,6 @@ const style = computed(() => {
     <span class="border transition-colors px-2 py-1 text-sm rounded-full cursor-pointer leading-8"
           :class="style"
           @click="active = !active">
-        <code><slot /></code>
+        <code class="before:!content-none after:!content-none"><slot /></code>
     </span>
 </template>
