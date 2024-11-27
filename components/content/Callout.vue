@@ -74,9 +74,9 @@ const dropdownIcon = ref(false);
 <template>
     <Accordion v-if="dropdown" type="single" collapsible>
         <AccordionItem value="item-1">
-            <div class="callout border-s-4 pl-5 my-8 text-base font-medium italic rounded-e-md" @click="dropdownIcon = !dropdownIcon"
+            <div class="callout border-s-4 pl-5 my-8 text-base font-medium italic rounded-e-md"
                  :class="[typeClasses[type]?.border, typeClasses[type]?.background, typeClasses[type]?.selection, typeClasses[type]?.blockquote]">
-                <AccordionTrigger>
+                <AccordionTrigger @click="dropdownIcon = !dropdownIcon">
                     <div class="flex gap-1 items-center" :class="typeClasses[type]?.text">
                         <component :is="iconMap[type]" class="size-6"></component>
 
