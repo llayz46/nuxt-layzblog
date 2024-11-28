@@ -2,7 +2,7 @@
 defineProps<{
     path: string
     slug: string
-    date: date
+    date: Date
     description: string
     tags: string[]
 }>()
