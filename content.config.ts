@@ -6,7 +6,7 @@ export const collections = {
         // Load every file inside the `content` directory
         source: {
             include: 'articles/*.md',
-            prefix: '/blog/articles'
+            prefix: '/blog'
         },
         // Specify the type of content in this collection
         type: 'page',
