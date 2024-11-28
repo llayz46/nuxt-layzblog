@@ -4,7 +4,7 @@ import FooterArticleCard from "~/components/FooterArticleCard.vue";
 const route = useRoute()
 
 const {data: article} = await useAsyncData(route.path, () => {
-    return queryCollection('articles').path(`/${route.params.slug}`).first()
+    return queryCollection('articles').path(route.path).first()
 })
 
 if (!article.value) {

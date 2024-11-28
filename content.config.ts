@@ -4,7 +4,10 @@ import {z} from "zod";
 export const collections = {
     articles: defineCollection({
         // Load every file inside the `content` directory
-        source: 'articles/*.md',
+        source: {
+            include: 'articles/*.md',
+            prefix: '/blog/articles'
+        },
         // Specify the type of content in this collection
         type: 'page',
         schema: z.object({
