@@ -84,7 +84,7 @@ useSeoMeta({
         <ContentRenderer v-if="article" :value="article" tag="article" class="content !max-w-3xl mt-2 pb-16 overflow-visible"/>
 
         <footer class="border-t border-white/10 pb-20">
-            <div class="grid grid-cols-3 gap-4 pb-12">
+            <div class="grid max-[400px]:grid-cols-1 grid-cols-2 sm:grid-cols-3 gap-4 mt-4 pb-12">
                 <template v-if="articles" v-for="a in articles">
                     <FooterArticleCard :path="a.path" :slug="a.meta.slug" :description="a.description" :date="a.date" :tags="a.meta.tags"/>
                 </template>
