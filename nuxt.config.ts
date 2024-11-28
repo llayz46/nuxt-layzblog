@@ -15,6 +15,10 @@ export default defineNuxtConfig({
       'shadcn-nuxt'
     ],
 
+    build: {
+        transpile: ['@nuxt/content']
+    },
+
     routeRules: {
         '/': {prerender: true}
     },
