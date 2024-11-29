@@ -121,7 +121,7 @@ Voir la liste des règles :
 sudo ufw app list
 ```
 
-Activer une règle : 
+Activer une règle :
 
 ```bash
 sudo ufw allow 'OpenSSH'
@@ -456,7 +456,7 @@ mysql -u <user> -p
 - **-u**{style="color: #be185d;"} sert a choisir l'utilisateur avec le quel l'on souhaite se connecter
 - **-p**{style="color: #be185d;"} sert à demander le mot de passe
 - **user**{style="color: #be185d;"} est le nom de l'utilisateur
-::
+  ::
 
 2. Créer une base de données :
 
@@ -539,15 +539,15 @@ GRANT ALL PRIVILEGES ON DATABASE nom_de_votre_base TO nom_utilisateur;
     ```bash
     nvm ls-remote
     ```
-   
+
     4. Installer la dernière version LTS de Node.js :
 
     ```bash
     nvm install --lts
     ```
-    ::underpre
-    *Pour installer une version spécifique, remplacez `--lts` par le numéro de version souhaité.*
-    ::
+   ::underpre
+   *Pour installer une version spécifique, remplacez `--lts` par le numéro de version souhaité.*
+   ::
 
 2. Installer Composer :
 
@@ -634,17 +634,17 @@ sudo nano /etc/nginx/sites-available/monsite
 
 ::callout{type="note" dropdown=true title="Infos"}
 > `root` dois pointer vers le répertoire publique de votre projet.
-> 
+>
 > /var/www/mon_projet/public;
 
 > `server_name` doit correspondre à votre nom de domaine.
-> 
+>
 > `server_name` llayz.fr www.llayz.fr
 
 > `fastcgi_pass` doit correspondre à votre version de PHP.
-> 
+>
 > Pour voir votre version : php-v.
-> 
+>
 > `fastcgi_pass` unix:/var/run/php/php8.4-fpm.sock;
 ::
 
@@ -763,7 +763,7 @@ sudo systemctl restart nginx
 ```
 
 ::callout{type="important" dropdown=true title="Attention"}
-Si vous rencontrez l'erreur suivante : 
+Si vous rencontrez l'erreur suivante :
 
 > ```bash
 > Job for nginx.service failed because the control process exited with error code. See "systemctl status nginx.service" and "journalctl -xeu nginx.service" for details.
@@ -963,7 +963,7 @@ Quelques conseils pour aller plus loin :
 > sudo apt update
 > ```
 
-> N'oubliez pas de retirer le mode debug de vos applications une fois en production. 
+> N'oubliez pas de retirer le mode debug de vos applications une fois en production.
 > ```dotenv
 > APP_DEBUG=false
 > ```
