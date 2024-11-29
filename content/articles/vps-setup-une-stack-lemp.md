@@ -456,7 +456,7 @@ mysql -u <user> -p
 - **-u**{style="color: #be185d;"} sert a choisir l'utilisateur avec le quel l'on souhaite se connecter
 - **-p**{style="color: #be185d;"} sert à demander le mot de passe
 - **user**{style="color: #be185d;"} est le nom de l'utilisateur
-  ::
+::
 
 2. Créer une base de données :
 
