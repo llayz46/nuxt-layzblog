@@ -7,7 +7,7 @@ const {data: article} = await useAsyncData(route.path, () => {
     return queryCollection('articles').path(route.path).first()
 })
 
-if (!article.value) {
+if (!article.value || article.value.draft === 1) {
     throw createError({
         statusCode: 404,
         statusMessage: 'Page introuvable',

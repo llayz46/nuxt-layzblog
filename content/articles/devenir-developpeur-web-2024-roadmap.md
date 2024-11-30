@@ -3,7 +3,7 @@ title: 'Devenir Développeur Web en 2024 : Roadmap Complète'
 slug: 'devenir-developpeur-web-2024-roadmap'
 description: "Ma roadmap pour devenir développeur web en 2024, des bases HTML/CSS à Laravel et Vue.js."
 date: 2024-11-16
-draft: false
+draft: 0
 tags: [ "dev", "articles", "web", "roadmap" ]
 thumbnail: 'devenir-developpeur-web-2024-roadmap.png'
 ---

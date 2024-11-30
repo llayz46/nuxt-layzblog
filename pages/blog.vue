@@ -1,10 +1,11 @@
 <script setup lang="ts">
 const { data: articles } = await useAsyncData('documents-list', () => {
     return queryCollection('articles')
+        .where('draft', '=', 0)
         .order('date', 'DESC')
         .all()
 })
-
+console.log(articles.value)
 useHead({
     title: 'Blog | llayz',
     meta: [

@@ -6,7 +6,7 @@
                 <span class="block size-3 rounded-full bg-[#E6C384C7]"></span>
                 <span class="block size-3 rounded-full bg-[#98BB6CC7]"></span>
             </template>
-            <p class="!text-sm !my-0 !font-light !text-white/50 !ml-1">{{ filename }}</p>
+            <p class="!text-sm !my-0 !font-light !text-white/50 !ml-0">{{ filename }}</p>
             <p class="!text-sm !my-0 !font-light !text-white/50 !ml-auto">{{ language }}</p>
         </div>
         <pre :class="$props.class" ref="preBlock" class="!bg-my-background/50 !rounded-none !rounded-b-md !mt-0 selection:text-[#E6C384] selection:bg-[#957fb8a6] text-wrap flex justify-between items-start"><slot /><button @click="handleCopy"><Square2StackIcon class="size-5 text-white/50 hover:text-white transition-colors"/></button></pre>

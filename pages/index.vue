@@ -3,6 +3,7 @@ import { ArrowRightIcon } from "@heroicons/vue/24/outline/index.js";
 
 const { data: articles } = await useAsyncData('documents-list', () => {
     return queryCollection('articles')
+        .where('draft', '=', 0)
         .order('date', 'DESC')
         .all()
 })

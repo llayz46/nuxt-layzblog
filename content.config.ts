@@ -14,6 +14,7 @@ export const collections = {
             date: z.string(),
             title: z.string(),
             description: z.string(),
+            draft: z.boolean(),
         })
     })
 }

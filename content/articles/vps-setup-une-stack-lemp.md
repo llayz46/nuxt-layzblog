@@ -3,7 +3,7 @@ title: 'Comment installer et configurer une stack LEMP sur un serveur VPS'
 slug: 'vps-setup-une-stack-lemp'
 description: "Découvrez comment installer et configurer une stack LEMP (Linux, Nginx, MySQL, PHP) sur un serveur VPS."
 date: 2024-11-21
-draft: false
+draft: 0
 tags: [ "linux", "debian", "ubuntu", "nginx", "deploy", "web", "serveur", "vps", "mysql", "bdd", "php", "lemp" ]
 thumbnail: 'vps-setup-une-stack-lemp.webp'
 ---

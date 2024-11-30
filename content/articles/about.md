@@ -3,7 +3,7 @@ title: 'About !'
 slug: 'about'
 description: 'Hello world !'
 date: 2024-11-16
-draft: false
+draft: 0
 tags: [ "dev", "test" ]
 thumbnail: 'about.jpg'
 ---

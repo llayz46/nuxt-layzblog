@@ -3,7 +3,7 @@ title: 'Test !'
 slug: 'test'
 description: "Nanani nanana"
 date: 2024-11-16
-draft: false
+draft: 1
 tags: [ "dev", "test" ]
 thumbnail: 'about.jpg'
 ---

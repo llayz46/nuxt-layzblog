@@ -3,7 +3,7 @@ title: 'Exemple de titre' // Titre de l'article (h1) & nom dans breadcrumb & tit
 slug: 'exemple-slug' // Slug de l'article
 description: "Ma roadmap pour devenir développeur web en 2024, des bases HTML/CSS à Laravel et Vue.js."
 date: 2024-11-16
-draft: false // Brouillon ou non
+draft: 0 // Brouillon ou non (0 visible / 1 brouillon)
 tags: ["dev", "articles", "web", "roadmap"]
 thumbnail: 'devenir-developpeur-web-2024-roadmap.png'
 ---
