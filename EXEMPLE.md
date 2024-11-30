@@ -51,6 +51,10 @@ The code in this next section is a simplified version of the code I use on my we
 The code in this next section is a simplified version of the code I use on my website; this makes it easier to understand, but it's not the actual code I use. The whole thing is linked below.
 ::
 
+::callout{type="idea" dropdown=true title="Quelques idées à tester"}
+The code in this next section is a simplified version of the code I use on my website; this makes it easier to understand, but it's not the actual code I use. The whole thing is linked below.
+::
+
 ::callout{type="astuce" dropdown=true title="Une fois NGINX installer les différentes commandes suivantes sont disponibles :"}
 Contenu du callout
 ```bash

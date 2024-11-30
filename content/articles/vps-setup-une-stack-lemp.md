@@ -952,7 +952,7 @@ Vous avez maintenant une stack LEMP fonctionnelle sur votre serveur VPS. Vous po
 
 Quelques conseils pour aller plus loin :
 
-::callout{type="astuce" dropdown=true title="Tips"}
+::callout{type="idea" dropdown=true title="Tips"}
 > Voir les logs du serveur :
 > ```bash
 > sudo tail -f /var/log/nginx/nom_du_log.log
