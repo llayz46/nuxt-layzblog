@@ -5,7 +5,7 @@ const { data: articles } = await useAsyncData('documents-list', () => {
         .order('date', 'DESC')
         .all()
 })
-console.log(articles.value)
+
 useHead({
     title: 'Blog | llayz',
     meta: [
