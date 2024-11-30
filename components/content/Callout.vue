@@ -68,41 +68,37 @@ const iconMap = ref<IconMap>({
     code: CodeBracketIcon
 });
 
-const dropdownIcon = ref(false);
+const isOpen = ref(false)
 </script>
 
 <template>
-    <Accordion v-if="dropdown" type="single" collapsible>
-        <AccordionItem value="item-1">
-            <div class="callout border-s-4 pl-5 my-8 text-base font-medium italic rounded-e-md"
+    <Collapsible v-if="dropdown" v-model:open="isOpen" class="callout border-s-4 pl-5 my-8 text-base font-medium italic rounded-e-md"
                  :class="[typeClasses[type]?.border, typeClasses[type]?.background, typeClasses[type]?.selection, typeClasses[type]?.blockquote]">
-                <AccordionTrigger @click="dropdownIcon = !dropdownIcon">
-                    <div class="flex gap-1 items-center" :class="typeClasses[type]?.text">
-                        <component :is="iconMap[type]" class="size-6"></component>
+        <CollapsibleTrigger class="w-full">
+            <div class="flex gap-1 items-center py-4" :class="typeClasses[type]?.text">
+                <component :is="iconMap[type]" class="size-6"></component>
 
-                        <span class="text-base leading-none font-semibold italic pr-1 max-sm:hidden">
-                            {{ title }}
-                        </span>
-                        <span class="text-base leading-none font-semibold italic pr-1 capitalize sm:hidden">
-                            {{ title.length < 15 ? title : type }}
-                        </span>
+                <span class="text-base leading-none font-semibold italic pr-1 max-sm:hidden">
+                    {{ title }}
+                </span>
+                <span class="text-base leading-none font-semibold italic pr-1 capitalize sm:hidden">
+                    {{ title.length < 15 ? title : type }}
+                </span>
 
-                        <ChevronRightIcon class="size-4 transition-transform duration-300" :class="{ 'rotate-90': dropdownIcon }" />
-                    </div>
-                </AccordionTrigger>
-
-                <AccordionContent>
-                    <template v-if="title && title.toLowerCase() !== type.toLowerCase() && title.length > 15">
-                        <p class="sm:hidden !mt-0">{{ title }}</p>
-                    </template>
-
-                    <p class="!my-0 !mt-0 prose-p:!mt-0 prose-ul:!mt-0 prose-blockquote:!mt-2 prose-code:!text-sm !pr-5" :class="{ 'not-italic': !italic }">
-                        <MDCSlot />
-                    </p>
-                </AccordionContent>
+                <ChevronRightIcon class="size-4 transition-transform duration-300" :class="{ 'rotate-90': isOpen }" />
             </div>
-        </AccordionItem>
-    </Accordion>
+        </CollapsibleTrigger>
+
+        <CollapsibleContent>
+            <template v-if="title && title.toLowerCase() !== type.toLowerCase() && title.length > 15">
+                <p class="sm:hidden !mt-0">{{ title }}</p>
+            </template>
+
+            <p class="!my-0 !mt-0 prose-p:!mt-0 prose-ul:!mt-0 prose-blockquote:!mt-2 prose-code:!text-sm !pr-5" :class="{ 'not-italic': !italic }">
+                <MDCSlot />
+            </p>
+        </CollapsibleContent>
+    </Collapsible>
 
     <div v-if="!dropdown" class="callout border-s-4 pl-5 py-4 my-8 text-base font-medium italic rounded-e-md"
          :class="[typeClasses[type]?.border, typeClasses[type]?.background, typeClasses[type]?.selection, typeClasses[type]?.blockquote]">
