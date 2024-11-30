@@ -20,6 +20,7 @@ if (!article.value || article.value.draft === 1) {
 const {data: articles} = await useAsyncData('articles', () => {
     return queryCollection('articles')
         .where('path', '!=', route.path)
+        .where('draft', '=', 0)
         .all()
 })
 
