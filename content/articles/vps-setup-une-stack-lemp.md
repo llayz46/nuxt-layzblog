@@ -254,7 +254,7 @@ Ensuite, créons un compte administrateur pour accéder à MySQL :
 sudo mysql
 ```
 ::underpre
-Ajoutez le *flag* -p si vous avez un mot de passe pour l'utilisateur root.
+Ajoutez le *flag* `-p` si vous avez un mot de passe pour l'utilisateur root.
 ::
 
 ```sql
