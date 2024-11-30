@@ -39,6 +39,12 @@ const name = 'world';
 console.log('Hello ' + name + ' !');
 ```
 
+```js [app.js] {1}
+const name = 'world';
+
+console.log('Hello ' + name + ' !');
+```
+
 ::callout{type="astuce"}
 The code in this next section is a simplified version of the code I use on my website; this makes it easier to understand, but it's not the actual code I use. The whole thing is linked below.
 ::

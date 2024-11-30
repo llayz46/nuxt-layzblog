@@ -797,7 +797,7 @@ cp .env .env.local
 sudo nano .env.local
 ```
 
-```dotenv
+```dotenv [.env.local]
 APP_ENV=prod
 APP_DEBUG=true*
 MAILER=native://default ou SMTP
@@ -863,7 +863,7 @@ cp .env.example .env
 sudo nano .env
 ```
 
-```dotenv
+```dotenv [.env]
 APP_ENV=prod
 APP_DEBUG=true*
 APP_URL=https://www.nom_de_domaine.com
