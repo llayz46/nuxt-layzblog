@@ -1,0 +1,10 @@
+{
+    "title": "Layzflix",
+    "description": "LayzFlix est une plateforme de critiques de films et séries développée avec Laravel et Livewire, intégrant l'API TMDB pour récupérer les données des films et séries. L'application propose des fonctionnalités telles que l'authentification des utilisateurs, l'ajout de films/séries aux favoris, la rédaction de critiques avec notes et commentaires, un système de niveaux pour les utilisateurs, la création de playlists de films/séries, et bien plus encore. La TALL Stack a été utilisée pour offrir une expérience utilisateur réactive et engageante.",
+    "image": "layzflix.png",
+    "date": "2024-07-30",
+    "technology": ["Laravel", "Livewire", "Tailwind CSS", "Alpine.js"],
+    "url": "https://layzflix.llayz.fr",
+    "github": "https://github.com/llayz46/tallstack-layzflix",
+    "tags": ["laravel", "livewire", "tailwindcss", "alpinejs", "tallstack", "api"]
+}
