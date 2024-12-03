@@ -18,13 +18,13 @@ export const collections = {
     projects: defineCollection({
         source: {
             include: 'projects/*.json',
-            prefix: '/portfolio'
+            prefix: '/projects'
         },
         type: 'page',
         schema: z.object({
             title: z.string(),
             description: z.string(),
-            draft: z.boolean(),
+            date: z.string(),
         })
     })
 }

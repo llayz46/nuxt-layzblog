@@ -78,10 +78,15 @@ export default {
                     from: { height: 'var(--radix-collapsible-content-height)' },
                     to: { height: 0 },
                 },
+                'shiny-badge-slide': {
+                    "0%": { transform: "translateX(-110%) skew(-16deg)" },
+                    "15%, 100%": { transform: "translateX(110%) skew(-16deg)" },
+                }
             },
             animation: {
                 'collapsible-down': 'collapsible-down 0.2s ease-in-out',
                 'collapsible-up': 'collapsible-up 0.2s ease-in-out',
+                'shiny-badge-slide': 'shiny-badge-slide 7s infinite',
             },
         },
         container: {
