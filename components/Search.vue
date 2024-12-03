@@ -46,7 +46,7 @@ const filteredProjects = computed(() =>
 )
 
 function onSelect(item) {
-    window.location = `blog${item.id}`
+    window.location = item.id
 }
 </script>
 
