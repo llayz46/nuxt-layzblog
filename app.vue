@@ -64,6 +64,11 @@ body::-webkit-scrollbar-thumb, .scrollbar::-webkit-scrollbar-thumb {
     color: theme('colors.my-primary.500');
 }
 
+.highlightedResult {
+    background-color: theme('colors.my-primary.500');
+    color: white;
+}
+
 @keyframes noisy {
     0% {
         background-position: 0 0;
