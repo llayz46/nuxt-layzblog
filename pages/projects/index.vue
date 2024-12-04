@@ -5,6 +5,30 @@ const { data: projects } = await useAsyncData('documents-list', () => {
         // .order('date', 'DESC')
         .all()
 })
+
+useHead({
+    link: [
+        { rel: 'canonical', href: 'https://llayz.fr/projects' }
+    ],
+    meta: [
+        { name: 'author', content: 'layz' },
+        { name: 'robots', content: 'index, follow' },
+        { name: 'keywords', content: 'portfolio, projets, développeur, développeur web' }
+    ]
+})
+
+useSeoMeta({
+    title: 'Portfolio | llayz',
+    description: 'Découvrez tous mes projets personnels, incluant des applications web, des sites vitrines utilisant différentes technologies et frameworks.',
+    ogTitle: 'Portfolio | llayz',
+    ogDescription: 'Parcourez une collection de mes meilleurs projets et réalisations.',
+    ogImage: 'https://llayz.fr/favicon.ico',
+    ogUrl: 'https://layz.fr/projects',
+    twitterTitle: 'Portfolio | llayz',
+    twitterDescription: 'Mon portfolio de projets personnels, incluant des applications web, des sites vitrines et autres.',
+    twitterImage: 'https://llayz.fr/favicon.ico',
+    twitterCard: 'summary_large_image'
+})
 </script>
 
 <template>

@@ -10,15 +10,13 @@ useHead({
     title: 'Blog | llayz',
     meta: [
         { name: 'description', content: 'Découvrez nos articles sur le développement web, des tutoriels, des roadmaps, et des conseils pour améliorer vos compétences ou apprendre de bonne pratiques.' },
-        { property: 'og:title', content: 'Blog | llayz' },
-        { property: 'og:description', content: 'Parcourez nos articles de qualité sur le développement web, incluant des ressources pour apprendre Laravel, Vue.js, Nuxt.js, Livewire et plus encore.' },
-        { property: 'og:image', content: 'https://llayz.fr/favicon.ico' },
-        { property: 'og:url', content: 'https://llayz.fr/blog' },
-        { property: 'twitter:title', content: 'Blog | llayz' },
-        { property: 'twitter:description', content: 'Accédez à des articles riches en contenu pour les développeurs, allant des bases aux technologies modernes.' },
-        { property: 'twitter:image', content: 'https://llayz.fr/favicon.ico' },
-        { property: 'twitter:card', content: 'summary_large_image' }
-    ]
+        { name: 'author', content: 'layz' },
+        { name: 'robots', content: 'index, follow' },
+        { name: 'keywords', content: 'blog, articles, développeur, développeur web, how to, tuto, guide, laravel, php, js, vuejs, nuxt, javascript' }
+    ],
+    link: [
+        { rel: 'canonical', href: 'https://layz.fr/blog' }
+    ],
 });
 
 useSeoMeta({

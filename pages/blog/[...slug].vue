@@ -34,43 +34,31 @@ if (articles.value) {
 useHead({
     title: article.value.title + ' | llayz',
     meta: [
-        {
-            name: 'description',
-            content: article.value.description || 'Explorez les articles couvrant le développement web moderne avec des guides pratiques et des tutoriels.'
-        },
-        {
-            name: 'keywords',
-            content: 'développement web, Laravel, Vue.js, Livewire, Nuxt.js, guide, Php, dev web, llayz, how to, tuto'
-        },
-        {property: 'og:title', content: article.value.title + ' | llayz'},
-        {
-            property: 'og:description',
-            content: article.value.description || 'Découvrez des articles passionnants sur le développement web.'
-        },
-        {property: 'og:type', content: 'article'},
-        {property: 'og:url', content: 'https://llayz.fr' + route.fullPath},
-        {property: 'og:image', content: article.value.imageUrl || 'https://llayz.fr/favicon.ico'},
-        {name: 'twitter:card', content: 'summary_large_image'},
-        {name: 'twitter:title', content: article.value.title + ' | llayz'},
-        {
-            name: 'twitter:description',
-            content: article.value.description || 'Découvrez des articles passionnants sur le développement web.'
-        },
-        {name: 'twitter:image', content: article.value.imageUrl || 'https://llayz.fr/favicon.ico'}
+        { name: 'description', content: article.value.description || 'Explorez les articles couvrant le développement web moderne avec des guides pratiques et des tutoriels.' },
+        { name: 'author', content: 'layz' },
+        { name: 'robots', content: 'index, follow' },
+        { name: 'keywords', content: 'développement web, Laravel, Vue.js, Livewire, Nuxt.js, guide, Php, dev web, llayz, how to, tuto, ' + article.value.meta.tags.join(', ') },
+    ],
+    link: [
+        { rel: 'canonical', href: 'https://llayz.fr/blog/' + article.value.meta.slug },
     ]
 });
 
 useSeoMeta({
     title: article.value.title + ' | llayz',
-    description: article.value.description || 'Explorez des articles couvrant le développement web moderne avec des guides pratiques et des tutoriels.',
     ogTitle: article.value.title + ' | llayz',
+    description: article.value.description || 'Explorez des articles couvrant le développement web moderne avec des guides pratiques et des tutoriels.',
     ogDescription: article.value.description || 'Découvrez des articles passionnants sur le développement web.',
-    ogImage: article.value.imageUrl || 'https://llayz.fr/favicon.ico',
+    image: 'https://llayz.fr/img/content/articles/' + article.value.meta.thumbnail || 'https://llayz.fr/favicon.ico',
+    ogImage: 'https://llayz.fr/img/content/articles/' + article.value.meta.thumbnail || 'https://llayz.fr/favicon.ico',
+    url: 'https://llayz.fr' + route.fullPath,
     ogUrl: 'https://llayz.fr' + route.fullPath,
+    type: 'article',
+    ogType: 'article',
     twitterCard: 'summary_large_image',
     twitterTitle: article.value.title + ' | llayz',
     twitterDescription: article.value.description || 'Découvrez des articles passionnants sur le développement web.',
-    twitterImage: article.value.imageUrl || 'https://llayz.fr/favicon.ico'
+    twitterImage: 'https://llayz.fr/img/content/articles/' + article.value.meta.thumbnail || 'https://llayz.fr/favicon.ico'
 });
 </script>
 

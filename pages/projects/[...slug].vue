@@ -22,6 +22,34 @@ const hovering = ref(false);
 function setHovering(value: boolean) {
     hovering.value = value;
 }
+
+useHead({
+    title: project.value.title + ' | llayz',
+    meta: [
+        { name: 'description', content: project.value.description || 'Explorez mes projets personnels et découvrez des applications web, des sites vitrines utilisant différentes technologies et frameworks.' },
+        { name: 'author', content: 'layz' },
+        { name: 'robots', content: 'index, follow' },
+        { name: 'keywords', content: 'portfolio, projet, dev web, ' + project.value.meta.tags.join(', ') },
+    ],
+    link: [
+        { rel: 'canonical', href: 'https://llayz.fr' + project.value.path },
+    ]
+});
+
+useSeoMeta({
+    title: project.value.title + ' | llayz',
+    ogTitle: project.value.title + ' | llayz',
+    description: project.value.description || 'Explorez mes projets personnels et découvrez des applications web, des sites vitrines utilisant différentes technologies et frameworks.',
+    ogDescription: project.value.description || 'Découvrez mes projets personnels et découvrez des applications web, des sites vitrines utilisant différentes technologies et frameworks.',
+    image: 'https://llayz.fr/img/content/projects/' + project.value.meta.image || 'https://llayz.fr/favicon.ico',
+    ogImage: 'https://llayz.fr/img/content/projects/' + project.value.meta.image || 'https://llayz.fr/favicon.ico',
+    url: 'https://llayz.fr' + project.value.path,
+    ogUrl: 'https://llayz.fr' + project.value.path,
+    twitterCard: 'summary_large_image',
+    twitterTitle: project.value.title + ' | llayz',
+    twitterDescription: project.value.description || 'Découvrez mes projets personnels et découvrez des applications web, des sites vitrines utilisant différentes technologies et frameworks.',
+    twitterImage: 'https://llayz.fr/img/content/projects/' + project.value.meta.image || 'https://llayz.fr/favicon.ico'
+});
 </script>
 
 <template>
