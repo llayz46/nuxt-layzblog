@@ -1,9 +1,8 @@
 <script setup>
 import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
-import { WindowIcon } from '@heroicons/vue/24/outline'
+import { FileText } from 'lucide-vue-next';
 import {
     Combobox,
-    ComboboxInput,
     ComboboxOptions,
     ComboboxOption,
     Dialog,
@@ -11,6 +10,7 @@ import {
     TransitionChild,
     TransitionRoot,
 } from '@headlessui/vue'
+import MiniSearch from 'minisearch'
 
 defineProps({
     open: Boolean,
@@ -18,36 +18,60 @@ defineProps({
 
 defineEmits(['close'])
 
-const { data: sections } = await useAsyncData('search-sections', () => {
-    return queryCollectionSearchSections('articles', {
-        ignoredTags: ['code'],
-    })
-})
-
-const sectionsMerge = sections.value.map((section) => {
-    return {
-        id: section.id,
-        title: section.title,
-        titles: section.titles,
-        content: section.content,
-        searchable: [section.title, section.content],
-    }
-})
-
-const baseProjects = sectionsMerge.slice(0, 20);
-
 const query = ref('')
-const filteredProjects = computed(() =>
-    query.value === ''
-        ? []
-        : sectionsMerge.filter((project) => {
-            return project.searchable.some((searchable) => searchable.toLowerCase().includes(query.value.toLowerCase()))
-        })
-)
+const { data } = await useAsyncData('search', () => queryCollectionSearchSections('articles'))
 
-function onSelect(item) {
-    window.location = item.id
-}
+const { data: navigation } = await useAsyncData('navigation', () => {
+    return queryCollectionNavigation('articles', ['body']).then(articles => {
+        articles[0].children.forEach(article => {
+            article.body.toc.links.forEach(link => {
+                const contentArray = article.body.value;
+                const headingIndex = contentArray.findIndex(
+                    block => block[0] === 'h2' && block[1].id === link.id
+                );
+
+                if (headingIndex >= 0) {
+                    for (let i = headingIndex + 1; i < contentArray.length; i++) {
+                        if (contentArray[i][0] === 'p') {
+                            link.previewText = contentArray[i][2];
+                            break;
+                        }
+                    }
+                }
+            });
+        });
+        return articles;
+    });
+});
+
+const miniSearch = new MiniSearch({
+    fields: ['title', 'content'],
+    storeFields: ['title', 'content'],
+    searchOptions: {
+        prefix: true,
+        fuzzy: 0.2,
+    },
+})
+
+miniSearch.addAll(toValue(data.value))
+
+const highlightTerms = (results) => {
+    return results.map(res => {
+        let highlightedContent = res.content
+
+        res.terms.forEach(term => {
+            const regex = new RegExp(`(${term})`, 'gi')
+            highlightedContent = highlightedContent.replace(regex, '<span class="highlightedResult">$1</span>')
+        })
+
+        return { ...res, highlightedContent }
+    });
+};
+
+const highlightedResults = computed(() => {
+    const rawResults = miniSearch.search(toValue(query))
+    return highlightTerms(rawResults)
+});
 </script>
 
 <template>
@@ -62,56 +86,49 @@ function onSelect(item) {
                 <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 scale-95"
                                  enter-to="opacity-100 scale-100" leave="ease-in duration-200"
                                  leave-from="opacity-100 scale-100" leave-to="opacity-0 scale-95">
-                    <DialogPanel
-                        class="mx-auto max-w-2xl transform divide-y divide-white/10 overflow-hidden rounded-xl bg-my-background shadow-2xl transition-all">
-                        <Combobox @update:modelValue="onSelect">
+                    <DialogPanel class="mx-auto max-w-2xl transform divide-y divide-white/10 overflow-hidden rounded-xl bg-my-background shadow-2xl transition-all">
+                        <Combobox>
                             <div class="relative">
                                 <MagnifyingGlassIcon
                                     class="pointer-events-none absolute left-4 top-3.5 size-5 text-gray-500"
                                     aria-hidden="true"/>
-                                <ComboboxInput
-                                    class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-white focus:ring-0 sm:text-sm"
-                                    placeholder="Rechercher..." @change="query = $event.target.value"/>
+                                <input type="text" class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-white focus:ring-0 sm:text-sm"
+                                    v-model="query" placeholder="Rechercher...">
                             </div>
 
-                            <ComboboxOptions v-if="query === '' || filteredProjects.length > 0" static
-                                             class="max-h-80 scroll-py-2 divide-y divide-white/10 overflow-y-auto scrollbar">
-                                <li class="p-2">
-                                    <h2 v-if="query === ''" class="mb-2 mt-4 px-3 text-xs font-semibold text-gray-200">
-                                        Recherche</h2>
-                                    <ul class="text-sm text-gray-400">
-                                        <ComboboxOption v-for="project in query === '' ? baseProjects : filteredProjects"
-                                                        :key="project.id" :value="project" as="template"
-                                                        v-slot="{ active }">
-                                            <li :class="['flex cursor-default select-none items-center rounded-md px-3 py-2', active && 'bg-gray-800/50 text-white']">
-                                                <WindowIcon
-                                                    :class="['h-6 w-6 flex-none', active ? 'text-white' : 'text-gray-500']"
-                                                    aria-hidden="true"/>
-                                                <span class="ml-3 flex-auto truncate">
-                                                    <template v-if="project.titles" v-for="(title, index) in project.titles" :key="index">
-                                                        <span class="font-medium text-white/75" v-if="title"
-                                                              :class="index === project.titles.length - 1 ? 'text-white/85' : '',
-                                                                      project.titles.length === 1 ? 'text-white/85' : ''">
-                                                            {{ title }}
-                                                            <span v-if="index !== project.titles.length - 1"> > </span>
-                                                        </span>
-                                                        {{ project.content }}
-                                                    </template>
-                                                    {{ project.title ? project.title : project.content }}
-                                                </span>
-                                                <span v-if="active"
-                                                      class="ml-3 flex-none text-gray-400">Aller voir..</span>
-                                            </li>
-                                        </ComboboxOption>
-                                    </ul>
+                            <ComboboxOptions static class="max-h-80 scroll-py-2 divide-y divide-white/10 overflow-y-auto scrollbar">
+                                <template v-if="!query" v-for="article in navigation[0].children">
+                                    <li class="p-1 isolate" v-if="article.body.toc.links.length !== 0">
+                                        <h2 class="px-2 py-1.5 text-xs font-semibold text-white">{{ article.title }}</h2>
+                                        <NuxtLink :to="`${article.path}#${heading.id}`" v-for="heading in article.body.toc.links" @click="$emit('close')"
+                                                  role="option" class="group relative w-full flex items-center gap-2 px-2 py-1.5 text-sm select-none outline-none hover:bg-[#1A1C1E] rounded">
+                                            <FileText class="size-5 shrink-0 text-slate-500"/>
+                                            <span class="truncate space-x-1 rtl:space-x-reverse text-slate-500">
+                                                <span class="text-white">{{ heading.text }}</span>
+                                                <span class="font-light">{{ heading.previewText }}</span>
+                                            </span>
+                                        </NuxtLink>
+                                    </li>
+                                </template>
+
+                                <li v-if="query && highlightedResults.length !== 0" class="p-1 isolate" @click="$emit('close')">
+                                    <ComboboxOption v-for="link in highlightedResults" :key="link.id" :value="link" as="template">
+                                        <NuxtLink :to="link.id" role="option"
+                                            class="group relative w-full flex items-center gap-2 px-2 py-1.5 text-sm select-none outline-none hover:bg-[#1A1C1E] rounded">
+                                            <FileText class="size-5 shrink-0 text-slate-500"/>
+                                            <span class="truncate space-x-1 rtl:space-x-reverse text-slate-500">
+                                                <span v-if="link.title" v-html="link.title" class="text-white"></span>
+                                                <span v-if="link.highlightedContent" v-html="link.highlightedContent" class="font-light"></span>
+                                            </span>
+                                        </NuxtLink>
+                                    </ComboboxOption>
+                                </li>
+
+                                <li v-if="query !== '' && highlightedResults.length === 0" class="px-6 py-14 text-center sm:px-14 flex items-center justify-center gap-2">
+                                    <FileText class="size-5 shrink-0 text-slate-500"/>
+                                    <p class="text-sm text-white">Nous n'avons rien trouvé correspondant à votre recherche</p>
                                 </li>
                             </ComboboxOptions>
-
-                            <div v-if="query !== '' && filteredProjects.length === 0"
-                                 class="px-6 py-14 text-center sm:px-14">
-                                <WindowIcon class="mx-auto h-6 w-6 text-gray-500" aria-hidden="true"/>
-                                <p class="mt-4 text-sm text-gray-200">Nous n'avons rien trouvé correspondant à votre recherche</p>
-                            </div>
                         </Combobox>
                     </DialogPanel>
                 </TransitionChild>

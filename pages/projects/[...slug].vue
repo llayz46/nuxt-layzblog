@@ -45,7 +45,7 @@ function setHovering(value: boolean) {
                     </div>
 
                     <div class="hidden px-2 py-1.5 backdrop-blur-md bg-my-background/10 outline outline-1 outline-white/10 rounded-lg sm:flex gap-2 w-fit">
-                        <NuxtLink :to="project.meta.url" class="text-sm/none text-white/30 hover:text-white/55 transition-colors">{{ project.meta.url }}</NuxtLink>
+                        <NuxtLink :to="project.meta.url" target="_blank" class="text-sm/none text-white/30 hover:text-white/55 transition-colors">{{ project.meta.url }}</NuxtLink>
                     </div>
                 </div>
             </div>
