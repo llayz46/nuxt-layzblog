@@ -1,8 +1,7 @@
 <script setup lang="ts">
 const { data: projects } = await useAsyncData('documents-list', () => {
     return queryCollection('projects')
-        // .where('draft', '=', 0)
-        // .order('date', 'DESC')
+        .order('date', 'DESC')
         .all()
 })
 

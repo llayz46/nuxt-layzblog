@@ -61,7 +61,7 @@ useSeoMeta({
         <div class="flex max-lg:flex-col gap-4 w-full">
             <div class="lg:w-4/6 flex flex-col gap-4">
                 <NuxtLink :to="project.meta.url" target="_blank" class="p-2 backdrop-blur-md bg-my-background/10 outline outline-1 outline-white/10 rounded-lg h-fit relative z-10">
-                    <Lens :hovering="hovering" @hover-update="setHovering" lens-size="130">
+                    <Lens :hovering="hovering" @hover-update="setHovering" :lens-size="130">
                         <img src="https://via.assets.so/game.png?id=1&q=95&w=918&h=612&fit=fill" alt="" class="rounded-lg max-w-[375] aspect-video object-cover object-top">
                     </Lens>
                 </NuxtLink>
