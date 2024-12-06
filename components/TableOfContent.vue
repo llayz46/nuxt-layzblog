@@ -12,7 +12,6 @@
     };
 
     const storeToc = useTableOfContentStore();
-    const isOpen = ref(false)
 </script>
 
 <template>
