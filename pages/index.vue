@@ -29,7 +29,7 @@ const showContactModal = ref(false);
             />
         </h1>
 
-        <p class="text-center text-lg text-white/75 mt-6">Je suis Louis Mazeau, développeur web full-stack. Mon objectif est de créer des applications web robustes et modernes, en m'assurant que chaque projet soit à la fois fonctionnel et agréable à utiliser..</p>
+        <p class="text-center text-lg text-white/75 mt-6">Je suis Louis Mazeau, développeur web full-stack. Mon objectif est de créer des applications web robustes et modernes, en m'assurant que chaque projet soit à la fois fonctionnel et agréable à utiliser.</p>
 
         <div class="flex justify-center">
             <button class="mt-6 rounded-md bg-my-primary-600 flex items-center gap-1 px-3.5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-my-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-my-primary-500 inline-block"
