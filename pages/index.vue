@@ -40,7 +40,7 @@ const showContactModal = ref(false);
     </section>
 
     <section class="max-w-5xl mx-auto pt-40 text-center">
-        <div class="mb-12 flex items-center justify-between">
+        <div class="mb-8 flex items-center justify-between">
             <div class="text-left space-y-3">
                 <RadiantText
                     class="text-3xl font-semibold inline-flex items-center justify-center py-1 transition ease-out hover:duration-300 hover:text-neutral-400"
@@ -66,7 +66,7 @@ const showContactModal = ref(false);
     </section>
 
     <section class="max-w-5xl mx-auto pt-20 text-center">
-        <div class="mb-12 flex items-center justify-between">
+        <div class="mb-8 flex items-center justify-between">
             <div class="text-left space-y-3">
                 <RadiantText
                     class="text-3xl font-semibold inline-flex items-center justify-center py-1 transition ease-out hover:duration-300 hover:text-neutral-400"

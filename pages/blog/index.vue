@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { data: articles } = await useAsyncData('documents-list', () => {
+const { data: articles } = await useAsyncData('documents-list-articles', () => {
     return queryCollection('articles')
         .where('draft', '=', 0)
         .order('date', 'DESC')
