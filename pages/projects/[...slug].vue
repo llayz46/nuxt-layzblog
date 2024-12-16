@@ -93,7 +93,7 @@ useSeoMeta({
                     </ul>
                 </div>
 
-                <div class="p-2 backdrop-blur-md bg-my-background/10 outline outline-1 outline-white/10 rounded-lg flex flex-col gap-1.5 select-none">
+                <div v-if="project.body.github" class="p-2 backdrop-blur-md bg-my-background/10 outline outline-1 outline-white/10 rounded-lg flex flex-col gap-1.5 select-none">
                     <h2 class="text-base font-medium text-white/75">Code source :</h2>
                     <NuxtLink :to="project.body.github" target="_blank" class="text-sm truncate sm:text-base text-white/50 hover:text-white/75 transition-colors font-light">{{ project.body.github }}</NuxtLink>
                 </div>
