@@ -62,9 +62,6 @@ const showContactModal = ref(false);
             <li v-for="project in projects" :key="project.path">
                 <project-card :project="project"/>
             </li>
-            <li v-for="project in projects" :key="project.path">
-                <project-card :project="project"/>
-            </li>
         </ul>
     </section>
 
