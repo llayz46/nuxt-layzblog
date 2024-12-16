@@ -28,7 +28,7 @@ HTML (HyperText Markup Language) et CSS (Cascading Style Sheets) sont les pilier
 - **Maîtrisez le CSS** : mise en page, flexbox, grid, animations de base.
 
 #### Exercices
-- **Recoder des sites simples** : Choisissez des sites web comme Alan.com ou même des templates de landing pages et essayez de les recréer. Cela vous aidera à comprendre comment les sites sont construits et à affiner vos compétences en HTML et CSS.
+- **Recoder des sites simples** : Choisissez des sites web comme Alan.com ou même des templates de landing pages et essayez de les recréer. Vous pouvez aller sur des sites comme [frontendmentor.io](https://www.frontendmentor.io/challenges) pour trouver des sites à recoder. Cela vous aidera à comprendre comment les sites sont construits et à affiner vos compétences en HTML et CSS.
 - **Travaillez avec des designs Figma** : vous pouvez aussi vous entraîner en convertissant des designs de plateformes comme Dribbble ou Behance en HTML et CSS pour apprendre à respecter les détails d'une maquette.
 
 ---

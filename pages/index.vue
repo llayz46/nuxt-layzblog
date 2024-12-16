@@ -39,9 +39,9 @@ const showContactModal = ref(false);
         </div>
     </section>
 
-    <section class="max-w-5xl mx-auto pt-40 text-center">
-        <div class="mb-8 flex items-center justify-between">
-            <div class="text-left space-y-3">
+    <section class="max-w-5xl mx-auto pt-40 text-center max-lg:px-4">
+        <div class="mb-8 flex max-md:flex-col justify-between gap-4 md:gap-8">
+            <div class="text-left space-y-2 md:space-y-3">
                 <RadiantText
                     class="text-3xl font-semibold inline-flex items-center justify-center py-1 transition ease-out hover:duration-300 hover:text-neutral-400"
                     :duration="7"
@@ -51,8 +51,8 @@ const showContactModal = ref(false);
 
                 <p class="text-base">Explore mes derniers projets, allant d'applications web full-stack à de petits projets front-end.</p>
             </div>
-            <NuxtLink to="/projects" class="group">
-                <span class="flex items-center w-fit mx-auto capitalize px-4 py-1.5 bg-my-background/20 group-hover:bg-my-background/30 rounded-md text-sm font-medium text-white/80 group-hover:text-white border border-white/10 group-hover:border-white/20 transition-colors">
+            <NuxtLink to="/projects" class="group shrink-0 mb-auto">
+                <span class="flex items-center w-fit md:mx-auto capitalize px-4 py-1.5 bg-my-background/20 group-hover:bg-my-background/30 rounded-md text-sm font-medium text-white/80 group-hover:text-white border border-white/10 group-hover:border-white/20 transition-colors">
                     Voir tout
                     <ArrowRightIcon class="size-4 inline-block ml-1"/>
                 </span>
@@ -60,14 +60,17 @@ const showContactModal = ref(false);
         </div>
         <ul class="h-full pb-10 md:pb-20 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             <li v-for="project in projects" :key="project.path">
-                <article-card :article="project"/>
+                <project-card :project="project"/>
+            </li>
+            <li v-for="project in projects" :key="project.path">
+                <project-card :project="project"/>
             </li>
         </ul>
     </section>
 
-    <section class="max-w-5xl mx-auto pt-20 text-center">
-        <div class="mb-8 flex items-center justify-between">
-            <div class="text-left space-y-3">
+    <section class="max-w-5xl mx-auto pt-20 text-center max-lg:px-4">
+        <div class="mb-8 flex max-md:flex-col justify-between gap-4 md:gap-8">
+            <div class="text-left space-y-2 md:space-y-3">
                 <RadiantText
                     class="text-3xl font-semibold inline-flex items-center justify-center py-1 transition ease-out hover:duration-300 hover:text-neutral-400"
                     :duration="7"
@@ -76,8 +79,8 @@ const showContactModal = ref(false);
                 </RadiantText>
                 <p class="text-base">Reste informé des dernières tendances en développement web, des astuces de code, et des tutoriels.</p>
             </div>
-            <NuxtLink to="/blog" class="group">
-                <span class="flex items-center w-fit mx-auto capitalize px-4 py-1.5 bg-my-background/20 group-hover:bg-my-background/30 rounded-md text-sm font-medium text-white/80 group-hover:text-white border border-white/10 group-hover:border-white/20 transition-colors">
+            <NuxtLink to="/blog" class="group shrink-0 mb-auto">
+                <span class="flex items-center w-fit md:mx-auto capitalize px-4 py-1.5 bg-my-background/20 group-hover:bg-my-background/30 rounded-md text-sm font-medium text-white/80 group-hover:text-white border border-white/10 group-hover:border-white/20 transition-colors">
                     Voir tout
                     <ArrowRightIcon class="size-4 inline-block ml-1"/>
                 </span>
