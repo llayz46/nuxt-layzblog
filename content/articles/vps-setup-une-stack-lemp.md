@@ -729,6 +729,12 @@ server {
 }
 ```
 
+3. Lier votre configuration à sites-enabled :
+
+```bash
+sudo ln -s /etc/nginx/sites-available/monsite /etc/nginx/sites-enabled/
+```
+
 ::callout{type="note" dropdown=true title="Générer un certificat SSL"}
 > **Certbot** doit être installé pour la version HTTPS.
 > ```bash
@@ -749,12 +755,6 @@ server {
 > ```
 > *Remplacer `nom_de_domaine` par votre nom de domaine sans les `www`.*
 ::
-
-3. Lier votre configuration à sites-enabled :
-
-```bash
-sudo ln -s /etc/nginx/sites-available/monsite /etc/nginx/sites-enabled/
-```
 
 4. Redémarrez NGINX :
 

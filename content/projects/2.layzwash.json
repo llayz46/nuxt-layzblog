@@ -1,8 +1,8 @@
 {
-    "title": "LayzFlix",
-    "description": "LayzFlix est une plateforme de critiques de films et séries développée avec Laravel et Livewire, intégrant l'API TMDB pour récupérer les données des films et séries. L'application propose des fonctionnalités telles que l'authentification des utilisateurs, l'ajout de films/séries aux favoris, la rédaction de critiques avec notes et commentaires, un système de niveaux pour les utilisateurs, la création de playlists de films/séries, et bien plus encore. J'ai utilisé la TALL Stack pour offrir une expérience utilisateur réactive et engageante.",
-    "image": "layzflix.webp",
-    "date": "2024-07-30",
+    "title": "LayzWash",
+    "description": "LayzWash est une application web e-commerce dynamique dédiée aux produits de detailing automobile. Elle propose une variété de fonctionnalités, notamment un panier d'achat qui se transfère des utilisateurs invités aux utilisateurs connectés, la possibilité d'ajouter des avis produits avec notes et commentaires, le téléchargement de factures au format PDF, le filtrage des produits et une fonction de recherche complète. L'application est construite avec la TALLstack : TailwindCSS, AlpineJS, Laravel et Livewire.",
+    "image": "layzwash.webp",
+    "date": "2024-09-20",
     "technology": [
         {
             "name": "Laravel",
@@ -21,7 +21,7 @@
             "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 128 128\"><path fill=\"#77c1d2\" fill-rule=\"evenodd\" d=\"M98.444 35.562 126 62.997 98.444 90.432 70.889 62.997z\" clip-rule=\"evenodd\"/><path fill=\"#2d3441\" fill-rule=\"evenodd\" d=\"m29.556 35.562 57.126 56.876H31.571L2 62.997z\" clip-rule=\"evenodd\"/></svg>\n"
         }
     ],
-    "url": "https://layzflix.llayz.fr",
-    "github": "https://github.com/llayz46/tallstack-layzflix",
-    "tags": ["laravel", "livewire", "tailwindcss", "alpinejs", "tallstack", "back-end", "front-end", "api"]
+    "url": "https://layzwash.llayz.fr",
+    "github": "https://github.com/llayz46/tallstack-layzwash",
+    "tags": ["laravel", "livewire", "tailwindcss", "alpinejs", "tallstack", "back-end", "front-end", "ecommerce", "shop"]
 }
