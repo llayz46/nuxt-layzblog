@@ -16,6 +16,30 @@ const { data: projects } = await useAsyncData('documents-list-projects', () => {
 })
 
 const showContactModal = ref(false);
+
+useHead({
+    link: [
+        { rel: 'canonical', href: 'https://llayz.fr/' }
+    ],
+    meta: [
+        { name: 'author', content: 'Layz' },
+        { name: 'robots', content: 'index, follow' },
+        { name: 'keywords', content: 'portfolio, blog, développeur web, projets web, développeur freelance, applications web, sites vitrines, frontend, backend, fullstack' }
+    ]
+});
+
+useSeoMeta({
+    title: 'Portfolio Développeur Web | Layz',
+    description: 'Découvrez le portfolio de Layz, développeur web passionné : applications web, sites vitrines, et projets personnels innovants utilisant des technologies modernes.',
+    ogTitle: 'Portfolio Développeur Web | Layz',
+    ogDescription: 'Explorez les projets de Layz, développeur web spécialisé dans le développement frontend et backend. Applications modernes, sites vitrines, et bien plus encore.',
+    ogImage: 'https://llayz.fr/favicon.ico',
+    ogUrl: 'https://llayz.fr/',
+    twitterTitle: 'Portfolio Développeur Web | Layz',
+    twitterDescription: 'Parcourez le portfolio de Layz : des applications web, des projets personnels innovants et des sites vitrines pour démontrer son expertise.',
+    twitterImage: 'https://llayz.fr/favicon.ico',
+    twitterCard: 'summary_large_image'
+});
 </script>
 
 <template>
