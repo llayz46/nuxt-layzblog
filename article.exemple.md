@@ -1,11 +1,11 @@
 ---
-title: 'Exemple de titre' // Titre de l'article (h1) & nom dans breadcrumb & titre de la page
-slug: 'exemple-slug' // Slug de l'article
+title: 'Exemple de titre' # Titre de l'article (h1) & nom dans breadcrumb & titre de la page
+slug: 'exemple-slug' # Slug de l'article
 description: "Ma roadmap pour devenir développeur web en 2024, des bases HTML/CSS à Laravel et Vue.js."
-date: 2024-11-16
-draft: 0 // Brouillon ou non (0 visible / 1 brouillon)
-tags: ["dev", "articles", "web", "roadmap"]
-thumbnail: 'devenir-developpeur-web-2024-roadmap.png'
+date: 2024-11-16 # Date de publication de l'article
+draft: 0 # Brouillon ou non (0 visible / 1 brouillon)
+tags: ["dev", "articles", "web", "roadmap"] # Tags de l'article - voir liste des tags dans le dossier article.tags.md
+thumbnail: 'devenir-developpeur-web-2024-roadmap.png' # Image de couverture de l'article - public/img/content/articles/image.ext
 ---
 # {{ $doc.title }}
 
