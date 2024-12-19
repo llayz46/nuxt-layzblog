@@ -22,7 +22,7 @@
         leave-active-class="transition ease-linear duration-75"
         leave-from-class="opacity-100 scale-100"
         leave-to-class="opacity-0 scale-95">
-        <div v-if="storeToc.open" class="fixed overflow-scroll top-0 right-0 mt-16 mr-3 w-80 max-[360px]:w-64 max-h-[calc(100%-5rem)] backdrop-blur-md bg-my-background/10 border border-white/10 rounded-xl p-5">
+        <div v-if="storeToc.open" class="fixed overflow-auto top-0 right-0 mt-16 mr-3 w-80 max-[360px]:w-64 max-h-[calc(100%-5rem)] backdrop-blur-md bg-my-background/10 border border-white/10 rounded-xl p-5">
             <button @click="storeToc.toggle" class="absolute top-0 right-0 p-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-white/50 hover:text-white transition-colors">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
