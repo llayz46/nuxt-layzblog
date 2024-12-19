@@ -1,11 +1,11 @@
 ---
-title: "Découvrez Svgl.app : La Bibliothèque Ultime d'Icones SVG"
+title: "Découvrez Svgl.app : La Bibliothèque d'Icones de Frameworks"
 slug: "svgl-app-bibliotheque-svg"
 description: "Explorez Svgl.app, une bibliothèque riche en icônes SVG incluant des icônes de frameworks, logiciels et bien plus. Téléchargez, copiez ou utilisez une API pour intégrer ces icônes dans vos projets."
 date: 2024-12-19
 draft: 0
 tags: [ "SVG", "icones", "API", "frameworks", "logiciels", "librairie", "dev web", "design", "outils" ]
-thumbnail: "top-librairies-icones.webp"
+thumbnail: "svgl-app-bibliotheque-svg.webp"
 ---
 
 # {{ $doc.title }}
@@ -13,7 +13,7 @@ thumbnail: "top-librairies-icones.webp"
 ::subtitle
 ---
 tags: [ "SVG", "icones", "API", "frameworks", "logiciels", "librairie", "dev web", "design", "outils" ]
-img: 'top-librairies-icones.webp'
+img: 'svgl-app-bibliotheque-svg.webp'
 ---
 ::
 
