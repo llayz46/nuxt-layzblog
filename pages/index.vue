@@ -2,7 +2,7 @@
 import { ArrowRightIcon } from "@heroicons/vue/24/outline/index.js";
 import { ArrowRight } from 'lucide-vue-next';
 
-const { data: articles } = await useAsyncData('documents-list-articles', () => {
+const { data: articles } = await useAsyncData('documents-list-articles-index', () => {
     return queryCollection('articles')
         .where('draft', '=', 0)
         .order('date', 'DESC')
@@ -10,7 +10,7 @@ const { data: articles } = await useAsyncData('documents-list-articles', () => {
         .all()
 })
 
-const { data: projects } = await useAsyncData('documents-list-projects', () => {
+const { data: projects } = await useAsyncData('documents-list-projects-index', () => {
     return queryCollection('projects')
         .order('date', 'DESC')
         .limit(3)
