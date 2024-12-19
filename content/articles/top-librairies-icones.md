@@ -2,9 +2,9 @@
 title: "Les meilleures librairies d'icônes pour vos projets"
 slug: "top-librairies-icones"
 description: "Découvrez les meilleures librairies d'icônes pour vos projets, analysées sur des critères comme le style, les formats disponibles, et l'intégration."
-date: 2024-12-18
+date: 2024-12-19
 draft: 0
-tags: [ "icônes", "design", "développement web", "productivité", "outils", "librairies" ]
+tags: [ "SVG", "icones", "design", "dev web", "productivite", "outils", "librairie" ]
 thumbnail: "top-librairies-icones.webp"
 ---
 
@@ -12,7 +12,7 @@ thumbnail: "top-librairies-icones.webp"
 
 ::subtitle
 ---
-tags: [ "icônes", "design", "développement web", "productivité", "outils", "librairies" ]
+tags: [ "SVG", "icones", "design", "dev web", "productivite", "outils", "librairie" ]
 img: 'top-librairies-icones.webp'
 ---
 ::

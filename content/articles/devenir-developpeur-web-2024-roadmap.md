@@ -4,14 +4,14 @@ slug: 'devenir-developpeur-web-2024-roadmap'
 description: "Ma roadmap pour devenir développeur web en 2024, des bases HTML/CSS à Laravel et Vue.js."
 date: 2024-11-16
 draft: 0
-tags: [ "dev", "articles", "web", "roadmap" ]
+tags: [ "dev web", "roadmap", "php", "laravel", "html", "css", "git", "mysql", "vuejs", "tailwindcss", "alpinejs", "livewire" ]
 thumbnail: 'devenir-developpeur-web-2024-roadmap.png'
 ---
 # {{ $doc.title }}
 
 ::subtitle
 ---
-tags: ["dev", "articles", "web", "roadmap"]
+tags: [ "dev web", "roadmap", "php", "laravel", "html", "css", "git", "mysql", "vuejs", "tailwindcss", "alpinejs", "livewire" ]
 img: 'devenir-developpeur-web-2024-roadmap.png'
 ---
 ::

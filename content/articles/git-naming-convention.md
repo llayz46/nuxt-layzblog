@@ -4,7 +4,7 @@ slug: 'git-naming-convention'
 description: "Apprenez à structurer vos messages de commit Git avec une nomenclature claire et adaptée. Facilitez la collaboration et le suivi de projet."
 date: 2024-12-18
 draft: 0
-tags: [ "git", "developpement", "workflow", "productivite", "collaboration", "versionning", "convention", "nomenclature", "commit", "github" ]
+tags: [ "git", "dev", "workflow", "productivite", "collaboration", "versionning", "convention", "nomenclature", "commit", "github" ]
 thumbnail: 'git-naming-convention.webp'
 ---
 
@@ -12,7 +12,7 @@ thumbnail: 'git-naming-convention.webp'
 
 ::subtitle
 ---
-tags: ["git", "developpement", "workflow", "productivite", "collaboration", "versionning", "convention", "nomenclature", "commit", "github"]
+tags: ["git", "dev", "workflow", "productivite", "collaboration", "versionning", "convention", "nomenclature", "commit", "github"]
 img: 'git-naming-convention.webp'
 ---
 ::
