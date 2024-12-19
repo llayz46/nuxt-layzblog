@@ -17,18 +17,26 @@ if (!article.value || article.value.draft === 1) {
     })
 }
 
-const {data: articles} = await useAsyncData('articles', () => {
+const {data: allArticles} = await useAsyncData('articles', () => {
     return queryCollection('articles')
         .where('path', '!=', route.path)
         .where('draft', '=', 0)
         .all()
 })
 
-if (articles.value) {
+const articles = ref([]);
+
+if (allArticles.value) {
     const targetTags = article.value.meta.tags
-    articles.value = articles.value.filter((a) => {
+    articles.value = allArticles.value.filter((a) => {
         return a.meta.tags.some(tag => targetTags.includes(tag))
     })
+}
+
+if (articles.value.length === 0) {
+    articles.value = allArticles.value
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        .slice(0, 3)
 }
 
 useHead({
