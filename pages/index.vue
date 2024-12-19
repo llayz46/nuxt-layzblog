@@ -6,12 +6,14 @@ const { data: articles } = await useAsyncData('documents-list-articles', () => {
     return queryCollection('articles')
         .where('draft', '=', 0)
         .order('date', 'DESC')
+        .limit(3)
         .all()
 })
 
 const { data: projects } = await useAsyncData('documents-list-projects', () => {
     return queryCollection('projects')
         .order('date', 'DESC')
+        .limit(3)
         .all()
 })
 
