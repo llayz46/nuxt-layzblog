@@ -6,6 +6,11 @@ date: 2024-12-18
 draft: 0
 tags: [ "git", "dev", "workflow", "productivite", "collaboration", "versionning", "convention", "nomenclature", "commit", "github" ]
 thumbnail: 'git-naming-convention.webp'
+sitemap:
+   loc: /blog/git-naming-convention
+   priority: 0.7
+   changefreq: monthly
+   lastmod: 2024-12-18
 ---
 
 # {{ $doc.title }}

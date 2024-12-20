@@ -6,6 +6,11 @@ date: 2024-11-21
 draft: 0
 tags: [ "linux", "debian", "ubuntu", "nginx", "deploy", "web", "serveur", "vps", "mysql", "bdd", "php", "lemp" ]
 thumbnail: 'vps-setup-une-stack-lemp.webp'
+sitemap:
+   loc: /blog/vps-setup-une-stack-lemp
+   priority: 0.7
+   changefreq: monthly
+   lastmod: 2024-11-21
 ---
 
 # {{ $doc.title }}

@@ -6,6 +6,11 @@ date: 2024-12-19
 draft: 0
 tags: [ "SVG", "icones", "API", "frameworks", "logiciels", "librairie", "dev web", "design", "outils" ]
 thumbnail: "svgl-app-bibliotheque-svg.webp"
+sitemap:
+   loc: /blog/svgl-app-bibliotheque-svg
+   priority: 0.7
+   changefreq: monthly
+   lastmod: 2024-12-19
 ---
 
 # {{ $doc.title }}

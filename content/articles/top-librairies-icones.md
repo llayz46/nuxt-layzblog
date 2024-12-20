@@ -6,6 +6,11 @@ date: 2024-12-19
 draft: 0
 tags: [ "SVG", "icones", "design", "dev web", "productivite", "outils", "librairie" ]
 thumbnail: "top-librairies-icones.webp"
+sitemap:
+  loc: /blog/top-librairies-icones
+  priority: 0.7
+  changefreq: monthly
+  lastmod: 2024-12-19
 ---
 
 # {{ $doc.title }}

@@ -6,6 +6,11 @@ date: 2024-11-16
 draft: 0
 tags: [ "dev web", "roadmap", "php", "laravel", "html", "css", "git", "mysql", "vuejs", "tailwindcss", "alpinejs", "livewire" ]
 thumbnail: 'devenir-developpeur-web-2024-roadmap.png'
+sitemap:
+    loc: /blog/devenir-developpeur-web-2024-roadmap
+    priority: 0.7
+    changefreq: monthly
+    lastmod: 2024-11-16
 ---
 # {{ $doc.title }}
 
