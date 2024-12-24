@@ -19,6 +19,12 @@ export default defineNuxtConfig({
         '/': {prerender: true}
     },
 
+    sitemap: {
+        sources: [
+            '/api/__sitemap__/urls'
+        ]
+    },
+
     googleFonts: {
         download: true,
         families: {
